@@ -18,6 +18,14 @@ import Blank from "./pages/Blank";
 import AppLayout from "./layout/AppLayout";
 import { ScrollToTop } from "./components/common/ScrollToTop";
 import Home from "./pages/Dashboard/Home";
+import Pesanan from "./pages/Pesanan";
+import Dapur from "./pages/Dapur";
+import Pelanggan from "./pages/Pelanggan";
+import Laporan from "./pages/Laporan";
+import Pengaturan from "./pages/Pengaturan";
+import Pengiriman from "./pages/Pengiriman";
+
+
 
 export default function App() {
   return (
@@ -28,6 +36,14 @@ export default function App() {
           {/* Dashboard Layout */}
           <Route element={<AppLayout />}>
             <Route index path="/" element={<Home />} />
+
+            {/* Menu Sidebar */}
+        <Route path="/pesanan" element={<Pesanan />} />
+        <Route path="/dapur" element={<Dapur />} />
+        <Route path="/pelanggan" element={<Pelanggan />} />
+        <Route path="/laporan" element={<Laporan />} />
+        <Route path="/pengaturan" element={<Pengaturan />} />
+        <Route path="/pengiriman" element={<Pengiriman />} />
 
             {/* Others Page */}
             <Route path="/profile" element={<UserProfiles />} />
