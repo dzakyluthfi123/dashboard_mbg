@@ -20,6 +20,7 @@ import { ScrollToTop } from "./components/common/ScrollToTop";
 import Home from "./pages/Dashboard/Home";
 import Pesanan from "./pages/Pesanan";
 import Dapur from "./pages/Dapur";
+import Batches from "./pages/Batches";
 import Pelanggan from "./pages/Pelanggan";
 import Laporan from "./pages/Laporan";
 import Pengaturan from "./pages/Pengaturan";
@@ -40,6 +41,7 @@ export default function App() {
             {/* Menu Sidebar */}
         <Route path="/pesanan" element={<Pesanan />} />
         <Route path="/dapur" element={<Dapur />} />
+        <Route path="/batches" element={<Batches />} />
         <Route path="/pelanggan" element={<Pelanggan />} />
         <Route path="/laporan" element={<Laporan />} />
         <Route path="/pengaturan" element={<Pengaturan />} />

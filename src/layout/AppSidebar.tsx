@@ -4,6 +4,7 @@ import { Link, useLocation } from "react-router";
 // Assume these icons are imported from an icon library
 import {
   BoxCubeIcon,
+  BoxIcon,
   CalenderIcon,
   ChevronDownIcon,
   GridIcon,
@@ -40,6 +41,11 @@ const navItems: NavItem[] = [
     icon: <BoxCubeIcon />,
     name: "Dapur",
     path: "/dapur",
+  },
+  {
+    icon: <BoxIcon />,
+    name: "Batches",
+    path: "/batches",
   },
   {
     icon: <BoxCubeIcon />,
