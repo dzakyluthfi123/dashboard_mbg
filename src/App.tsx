@@ -25,6 +25,7 @@ import Pelanggan from "./pages/Pelanggan";
 import Laporan from "./pages/Laporan";
 import Pengaturan from "./pages/Pengaturan";
 import Pengiriman from "./pages/Pengiriman";
+import TambahPesanan from "./pages/TambahPesanan";
 
 
 
@@ -51,6 +52,7 @@ export default function App() {
             <Route path="/profile" element={<UserProfiles />} />
             <Route path="/calendar" element={<Calendar />} />
             <Route path="/blank" element={<Blank />} />
+            <Route path="/tambah-pesanan" element={<TambahPesanan />} />
 
             {/* Forms */}
             <Route path="/form-elements" element={<FormElements />} />

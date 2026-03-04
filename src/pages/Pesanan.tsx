@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Pesanan() {
   // ===== FORMAT TANGGAL OTOMATIS =====
   const today = new Date();
@@ -30,9 +32,12 @@ export default function Pesanan() {
       <div className="bg-white dark:bg-gray-800 rounded-xl shadow p-6">
         <div className="flex justify-between items-center mb-6">
           <div className="flex items-center gap-3">
-            <button className="bg-green-700 text-white w-8 h-8 rounded flex items-center justify-center text-lg">
+            <Link
+              to="/tambah-pesanan"
+              className="bg-green-700 text-white w-8 h-8 rounded flex items-center justify-center text-lg"
+            >
               +
-            </button>
+            </Link>
             <h2 className="text-lg font-bold text-gray-800 dark:text-white">
               List Pesanan <span className="text-gray-400">75</span>
             </h2>
@@ -346,7 +351,8 @@ export default function Pesanan() {
                     <div key={idx} className="flex justify-between">
                       <span className="text-gray-300">{x.label}</span>
                       <span className="text-gray-700 dark:text-gray-200">
-                        {x.value} <span className="text-gray-400">{x.unit}</span>
+                        {x.value}{" "}
+                        <span className="text-gray-400">{x.unit}</span>
                       </span>
                     </div>
                   ))}
