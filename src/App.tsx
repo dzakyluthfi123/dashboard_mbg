@@ -26,8 +26,7 @@ import Laporan from "./pages/Laporan";
 import Pengaturan from "./pages/Pengaturan";
 import Pengiriman from "./pages/Pengiriman";
 import TambahPesanan from "./pages/TambahPesanan";
-
-
+import PesananBaru from "./pages/PesananBaru";
 
 export default function App() {
   return (
@@ -40,19 +39,22 @@ export default function App() {
             <Route index path="/" element={<Home />} />
 
             {/* Menu Sidebar */}
-        <Route path="/pesanan" element={<Pesanan />} />
-        <Route path="/dapur" element={<Dapur />} />
-        <Route path="/batches" element={<Batches />} />
-        <Route path="/pelanggan" element={<Pelanggan />} />
-        <Route path="/laporan" element={<Laporan />} />
-        <Route path="/pengaturan" element={<Pengaturan />} />
-        <Route path="/pengiriman" element={<Pengiriman />} />
+            <Route path="/pesanan" element={<Pesanan />} />
+            <Route path="/dapur" element={<Dapur />} />
+            <Route path="/batches" element={<Batches />} />
+            <Route path="/pelanggan" element={<Pelanggan />} />
+            <Route path="/laporan" element={<Laporan />} />
+            <Route path="/pengaturan" element={<Pengaturan />} />
+            <Route path="/pengiriman" element={<Pengiriman />} />
 
             {/* Others Page */}
             <Route path="/profile" element={<UserProfiles />} />
             <Route path="/calendar" element={<Calendar />} />
             <Route path="/blank" element={<Blank />} />
-            <Route path="/tambah-pesanan" element={<TambahPesanan />} />
+
+            {/* Pesanan */}
+            <Route path="/pesanan/tambah" element={<TambahPesanan />} />
+            <Route path="/pesanan/menu" element={<PesananBaru />} />
 
             {/* Forms */}
             <Route path="/form-elements" element={<FormElements />} />

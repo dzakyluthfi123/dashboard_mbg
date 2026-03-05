@@ -209,6 +209,8 @@ export default function TambahPesanan() {
                 <label className="text-sm text-gray-500">Tipe Sajian</label>
                 <select className="w-full h-11 border border-gray-300 rounded-lg px-4 mt-1">
                   <option>Select...</option>
+                  <option>Sarapan</option>
+                  <option>Makan Siang</option>
                 </select>
               </div>
 
@@ -267,7 +269,7 @@ export default function TambahPesanan() {
               </button>
 
               <button
-                onClick={() => navigate("/pesanan-baru")}
+                onClick={() => navigate("/pesanan/menu")}
                 className="flex-1 py-3 bg-[#0A7A3F] text-white rounded-xl hover:bg-green-800 transition"
               >
                 Next

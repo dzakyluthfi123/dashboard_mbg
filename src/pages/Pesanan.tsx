@@ -33,7 +33,7 @@ export default function Pesanan() {
         <div className="flex justify-between items-center mb-6">
           <div className="flex items-center gap-3">
             <Link
-              to="/tambah-pesanan"
+              to="/pesanan/tambah"
               className="bg-green-700 text-white w-8 h-8 rounded flex items-center justify-center text-lg"
             >
               +
