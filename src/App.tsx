@@ -27,6 +27,7 @@ import Pengaturan from "./pages/Pengaturan";
 import Pengiriman from "./pages/Pengiriman";
 import TambahPesanan from "./pages/TambahPesanan";
 import PesananBaru from "./pages/PesananBaru";
+import NewBatch from "./pages/NewBatch";
 
 export default function App() {
   return (
@@ -55,6 +56,9 @@ export default function App() {
             {/* Pesanan */}
             <Route path="/pesanan/tambah" element={<TambahPesanan />} />
             <Route path="/pesanan/menu" element={<PesananBaru />} />
+
+            {/* Batches */}
+            <Route path="/batches/new" element={<NewBatch />} />
 
             {/* Forms */}
             <Route path="/form-elements" element={<FormElements />} />

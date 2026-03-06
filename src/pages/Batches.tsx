@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 type TabType = "upcoming" | "history";
 
@@ -16,6 +17,7 @@ export default function Batches() {
   const [filter, setFilter] = useState("Filter");
   const [activeDayBatch10, setActiveDayBatch10] = useState(3);
   const [activeDayBatch9, setActiveDayBatch9] = useState(3);
+  const navigate = useNavigate();
 
   const ongoing = useMemo(
     () => ({
@@ -146,7 +148,7 @@ export default function Batches() {
       <div className="flex items-start justify-between">
         <div className="flex items-center gap-4">
           <button
-            onClick={() => alert("Simulasi tambah batch")}
+            onClick={() => navigate("/batches/new")}
             className="w-12 h-12 rounded-xl bg-green-800 text-white flex items-center justify-center text-2xl shadow"
             title="Tambah"
           >
