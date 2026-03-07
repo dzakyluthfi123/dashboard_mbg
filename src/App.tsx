@@ -29,6 +29,9 @@ import TambahPesanan from "./pages/TambahPesanan";
 import PesananBaru from "./pages/PesananBaru";
 import NewBatch from "./pages/NewBatch";
 import ModifikasiExisting from "./pages/ModifikasiExisting";
+import SettingBatch from "./pages/SettingBatch";
+import SettingFinance from "./pages/SettingFinance";
+import SettingAccount from "./pages/SettingAccount";
 
 export default function App() {
   return (
@@ -61,6 +64,11 @@ export default function App() {
             {/* Batches */}
             <Route path="/batches/new" element={<NewBatch />} />
             <Route path="/batches/existing" element={<ModifikasiExisting />} />
+
+            {/* Pengaturan */}
+            <Route path="/pengaturan/batch" element={<SettingBatch />} />
+            <Route path="/pengaturan/finance" element={<SettingFinance />} />
+            <Route path="/pengaturan/account" element={<SettingAccount />} />
 
             {/* Forms */}
             <Route path="/form-elements" element={<FormElements />} />
