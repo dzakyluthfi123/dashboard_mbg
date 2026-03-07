@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Camera, Trash2 } from "lucide-react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { ChevronDown } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 export default function NewBatch() {
@@ -28,31 +29,49 @@ export default function NewBatch() {
         <div className="p-6 space-y-6">
           {/* BUTTONS */}
           <div className="flex gap-3">
-            <button
-              onClick={() => navigate("/batches/existing")}
-              className="px-4 py-2 border border-[#0A7A3F] text-[#0A7A3F] rounded-lg text-sm hover:bg-green-50"
-            >
+            <button className="px-4 py-2 bg-[#0A7A3F] text-white rounded-lg text-sm hover:bg-green-800">
               Modifikasi Existing
             </button>
 
-            <button className="px-4 py-2 bg-[#0A7A3F] text-white rounded-lg text-sm hover:bg-green-800">
+            <button className="px-4 py-2 border border-[#0A7A3F] text-[#0A7A3F] rounded-lg text-sm hover:bg-green-50 ">
               Buat Baru
             </button>
           </div>
 
-          {/* DATE */}
+          {/* BATCH */}
           <div>
+            <label className="text-sm text-gray-500 block mb-1">Batch</label>
+
+            <div className="relative w-full">
+              <select className="w-full h-11 border border-gray-300 rounded-lg px-4 pr-10 appearance-none bg-white">
+                <option>Select</option>
+                <option>Batch no.1</option>
+                <option>Batch no.2</option>
+                <option>Batch no.3</option>
+              </select>
+
+              <ChevronDown
+                size={18}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"
+              />
+            </div>
+          </div>
+
+          {/* DATE */}
+          <div className="w-full">
             <label className="text-sm text-gray-500 block mb-1">
               Tanggal Mulai
             </label>
 
-            <DatePicker
-              selected={startDate}
-              onChange={(date: Date | null) => setStartDate(date)}
-              placeholderText="DD/MM/YYYY"
-              dateFormat="dd/MM/yyyy"
-              className="w-full h-11 border border-gray-300 rounded-lg px-4"
-            />
+            <div className="w-full">
+              <DatePicker
+                selected={startDate}
+                onChange={(date: Date | null) => setStartDate(date)}
+                placeholderText="DD/MM/YYYY"
+                dateFormat="dd/MM/yyyy"
+                className="w-full h-11 border border-gray-300 rounded-lg px-4"
+              />
+            </div>
           </div>
         </div>
       </div>

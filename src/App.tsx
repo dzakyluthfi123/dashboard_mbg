@@ -28,6 +28,7 @@ import Pengiriman from "./pages/Pengiriman";
 import TambahPesanan from "./pages/TambahPesanan";
 import PesananBaru from "./pages/PesananBaru";
 import NewBatch from "./pages/NewBatch";
+import ModifikasiExisting from "./pages/ModifikasiExisting";
 
 export default function App() {
   return (
@@ -59,6 +60,7 @@ export default function App() {
 
             {/* Batches */}
             <Route path="/batches/new" element={<NewBatch />} />
+            <Route path="/batches/existing" element={<ModifikasiExisting />} />
 
             {/* Forms */}
             <Route path="/form-elements" element={<FormElements />} />
