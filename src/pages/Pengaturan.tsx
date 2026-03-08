@@ -2,6 +2,8 @@ import { useMemo, useState } from "react";
 import SettingBatch from "./SettingBatch";
 import SettingFinance from "./SettingFinance";
 import SettingAccount from "./SettingAccount";
+import SettingShipper from "./SettingShipper";
+import SettingUser from "./SettingUser";
 
 type TabKey = "penerima" | "batch" | "finance" | "shipper" | "user" | "account";
 
@@ -481,6 +483,18 @@ export default function ReceiverSettings() {
         {tab === "account" && (
           <div className="p-4">
             <SettingAccount />
+          </div>
+        )}
+        
+        {tab === "shipper" && (
+          <div className="p-4">
+            <SettingShipper />
+          </div>
+        )}
+
+        {tab === "user" && (
+          <div className="p-4">
+            <SettingUser />
           </div>
         )}
       </div>

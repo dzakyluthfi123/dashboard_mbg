@@ -32,6 +32,9 @@ import ModifikasiExisting from "./pages/ModifikasiExisting";
 import SettingBatch from "./pages/SettingBatch";
 import SettingFinance from "./pages/SettingFinance";
 import SettingAccount from "./pages/SettingAccount";
+import SettingShipper from "./pages/SettingShipper";
+import SettingUser from "./pages/SettingUser";
+import Administration from "./pages/Administration";
 
 export default function App() {
   return (
@@ -56,6 +59,8 @@ export default function App() {
             <Route path="/profile" element={<UserProfiles />} />
             <Route path="/calendar" element={<Calendar />} />
             <Route path="/blank" element={<Blank />} />
+            <Route path="/administration" element={<Administration />} />
+
 
             {/* Pesanan */}
             <Route path="/pesanan/tambah" element={<TambahPesanan />} />
@@ -69,6 +74,8 @@ export default function App() {
             <Route path="/pengaturan/batch" element={<SettingBatch />} />
             <Route path="/pengaturan/finance" element={<SettingFinance />} />
             <Route path="/pengaturan/account" element={<SettingAccount />} />
+            <Route path="/pengaturan/shipper" element={<SettingShipper />} />
+            <Route path="/pengaturan/user" element={<SettingUser />} />
 
             {/* Forms */}
             <Route path="/form-elements" element={<FormElements />} />
