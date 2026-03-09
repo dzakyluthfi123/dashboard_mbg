@@ -21,7 +21,7 @@ import Home from "./pages/Dashboard/Home";
 import Pesanan from "./pages/Pesanan";
 import Dapur from "./pages/Dapur";
 import Batches from "./pages/Batches";
-import Pelanggan from "./pages/Pelanggan";
+import Penerima from "./pages/Penerima";
 import Laporan from "./pages/Laporan";
 import Pengaturan from "./pages/Pengaturan";
 import Pengiriman from "./pages/Pengiriman";
@@ -50,7 +50,7 @@ export default function App() {
             <Route path="/pesanan" element={<Pesanan />} />
             <Route path="/dapur" element={<Dapur />} />
             <Route path="/batches" element={<Batches />} />
-            <Route path="/pelanggan" element={<Pelanggan />} />
+            <Route path="/penerima" element={<Penerima />} />
             <Route path="/laporan" element={<Laporan />} />
             <Route path="/pengaturan" element={<Pengaturan />} />
             <Route path="/pengiriman" element={<Pengiriman />} />

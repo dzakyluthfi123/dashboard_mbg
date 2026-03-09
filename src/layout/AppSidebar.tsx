@@ -49,8 +49,8 @@ const navItems: NavItem[] = [
   },
   {
     icon: <UserCircleIcon />,
-    name: "Pelanggan",
-    path: "/pelanggan",
+    name: "Penerima",
+    path: "/penerima",
   },
   {
     icon: <PieChartIcon />,
