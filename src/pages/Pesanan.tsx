@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 
 export default function Pesanan() {
-  // ===== FORMAT TANGGAL OTOMATIS =====
   const today = new Date();
 
   const hari = today.toLocaleDateString("id-ID", {
@@ -15,9 +14,9 @@ export default function Pesanan() {
   });
 
   return (
-    <div className="space-y-6">
-      {/* PAGE HEADER (Seperti gambar) */}
-      <div className="bg-gray-100 dark:bg-gray-900 px-6 py-4 rounded-xl shadow-sm flex justify-between items-center">
+    <div className="min-h-screen bg-gray-100 dark:bg-gray-950 p-4 md:p-6 space-y-6">
+      {/* PAGE HEADER */}
+      <div className="bg-gray-50 dark:bg-gray-900 px-6 py-4 rounded-xl shadow-md border border-gray-200 dark:border-gray-800 flex justify-between items-center">
         <h1 className="text-lg font-bold text-green-800 dark:text-white">
           Pesanan
         </h1>
@@ -29,12 +28,12 @@ export default function Pesanan() {
       </div>
 
       {/* HEADER LIST PESANAN */}
-      <div className="bg-white dark:bg-gray-800 rounded-xl shadow p-6">
-        <div className="flex justify-between items-center mb-6">
+      <div className="bg-gray-50 dark:bg-gray-900 rounded-xl shadow-md border border-gray-200 dark:border-gray-800 p-6">
+        <div className="flex flex-col gap-4 xl:flex-row xl:justify-between xl:items-center mb-6">
           <div className="flex items-center gap-3">
             <Link
               to="/pesanan/tambah"
-              className="bg-green-700 text-white w-8 h-8 rounded flex items-center justify-center text-lg"
+              className="bg-green-700 hover:bg-green-800 text-white w-8 h-8 rounded flex items-center justify-center text-lg"
             >
               +
             </Link>
@@ -43,15 +42,17 @@ export default function Pesanan() {
             </h2>
           </div>
 
-          <div className="flex items-center gap-3">
-            <button className="border px-3 py-1 rounded text-sm">Filter</button>
-            <button className="border px-3 py-1 rounded text-sm">
+          <div className="flex flex-wrap items-center gap-3">
+            <button className="border border-gray-200 dark:border-gray-700 px-3 py-1.5 rounded text-sm text-gray-700 dark:text-gray-200 bg-white dark:bg-gray-800">
+              Filter
+            </button>
+            <button className="border border-gray-200 dark:border-gray-700 px-3 py-1.5 rounded text-sm text-gray-700 dark:text-gray-200 bg-white dark:bg-gray-800">
               Start Date ↑
             </button>
             <input
               type="text"
               placeholder="Search..."
-              className="border px-3 py-1 rounded text-sm"
+              className="border border-gray-200 dark:border-gray-700 px-3 py-1.5 rounded text-sm bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 placeholder:text-gray-400 outline-none"
             />
           </div>
         </div>
@@ -59,12 +60,12 @@ export default function Pesanan() {
         {/* TABLE */}
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
-            <thead className="text-gray-500 border-b dark:border-gray-700">
+            <thead className="text-gray-500 dark:text-gray-400 border-b border-gray-200 dark:border-gray-700">
               <tr>
                 <th className="text-left py-3">Order no.</th>
                 <th className="text-left">Pihak Penerima</th>
                 <th className="text-left">Contact</th>
-                <th className="text-left">pax</th>
+                <th className="text-left">Pax</th>
                 <th className="text-left">Sajian</th>
                 <th className="text-left">Start</th>
                 <th className="text-left">Status</th>
@@ -73,7 +74,7 @@ export default function Pesanan() {
               </tr>
             </thead>
 
-            <tbody className="divide-y dark:divide-gray-700">
+            <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
               {[
                 {
                   name: "Pesantren Cendekia Murni",
@@ -100,21 +101,26 @@ export default function Pesanan() {
                   status: "Aktif",
                 },
               ].map((row, i) => (
-                <tr key={i} className="hover:bg-gray-50 dark:hover:bg-gray-700">
-                  <td className="py-3">Order no.</td>
-                  <td>{row.name}</td>
-                  <td>{row.contact}</td>
-                  <td>{row.pax}</td>
-                  <td>{row.sajian}</td>
-                  <td>{row.start}</td>
+                <tr
+                  key={i}
+                  className="hover:bg-gray-100 dark:hover:bg-gray-800 transition"
+                >
+                  <td className="py-3 text-gray-700 dark:text-gray-200">
+                    Order no.
+                  </td>
+                  <td className="text-gray-700 dark:text-gray-200">{row.name}</td>
+                  <td className="text-gray-700 dark:text-gray-200">{row.contact}</td>
+                  <td className="text-gray-700 dark:text-gray-200">{row.pax}</td>
+                  <td className="text-gray-700 dark:text-gray-200">{row.sajian}</td>
+                  <td className="text-gray-700 dark:text-gray-200">{row.start}</td>
                   <td>
-                    <span className="bg-green-100 text-green-700 px-3 py-1 rounded text-xs">
+                    <span className="bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300 px-3 py-1 rounded text-xs">
                       {row.status}
                     </span>
                   </td>
-                  <td>2-5</td>
+                  <td className="text-gray-700 dark:text-gray-200">2-5</td>
                   <td>
-                    <div className="w-24 bg-gray-200 h-2 rounded">
+                    <div className="w-24 bg-gray-200 dark:bg-gray-700 h-2 rounded">
                       <div className="bg-orange-400 h-2 rounded w-[60%]"></div>
                     </div>
                     <span className="text-xs text-gray-400">16 / 30</span>
@@ -126,12 +132,12 @@ export default function Pesanan() {
         </div>
       </div>
 
-      {/* ===================== BOTTOM SECTION (SAMA SEPERTI GAMBAR) ===================== */}
+      {/* BOTTOM SECTION */}
       <div className="grid grid-cols-12 gap-6">
         {/* LEFT TABLE MENU */}
-        <div className="col-span-12 xl:col-span-8 bg-white dark:bg-gray-800 rounded-xl shadow overflow-hidden">
+        <div className="col-span-12 xl:col-span-8 bg-gray-50 dark:bg-gray-900 rounded-xl shadow-md border border-gray-200 dark:border-gray-800 overflow-hidden">
           {/* Header */}
-          <div className="px-6 py-4 border-b dark:border-gray-700 flex items-center justify-between">
+          <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between">
             <div className="grid grid-cols-12 w-full">
               <div className="col-span-2 text-[13px] font-semibold text-orange-500">
                 Tanggal
@@ -144,7 +150,7 @@ export default function Pesanan() {
               </div>
             </div>
 
-            <select className="ml-4 text-xs border border-gray-200 dark:border-gray-700 rounded-lg px-3 py-2 bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-200">
+            <select className="ml-4 text-xs border border-gray-200 dark:border-gray-700 rounded-lg px-3 py-2 bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-200 outline-none">
               <option>Person #01 ↑</option>
               <option>Person #02</option>
               <option>Person #03</option>
@@ -152,7 +158,7 @@ export default function Pesanan() {
           </div>
 
           {/* Rows */}
-          <div className="divide-y dark:divide-gray-700">
+          <div className="divide-y divide-gray-200 dark:divide-gray-700">
             {[
               {
                 date: "Mar 4, 2022",
@@ -183,17 +189,15 @@ export default function Pesanan() {
             ].map((row, i) => (
               <div key={i} className="px-6 py-5">
                 <div className="grid grid-cols-12 items-center gap-4">
-                  {/* Date */}
-                  <div className="col-span-2 text-sm text-gray-500">
+                  <div className="col-span-2 text-sm text-gray-500 dark:text-gray-400">
                     {row.date}
                   </div>
 
-                  {/* Sarapan */}
                   <div className="col-span-5 flex items-center justify-between gap-3">
                     <div
                       className={
                         row.highlight
-                          ? "flex-1 bg-[#FCEFD8] rounded-lg px-4 py-3 text-sm text-gray-700"
+                          ? "flex-1 bg-[#FCEFD8] dark:bg-orange-500/10 rounded-lg px-4 py-3 text-sm text-gray-700 dark:text-gray-200"
                           : "flex-1 text-sm text-gray-700 dark:text-gray-200"
                       }
                     >
@@ -201,11 +205,12 @@ export default function Pesanan() {
                     </div>
 
                     <div className="flex items-center gap-2">
-                      {/* camera */}
                       <button
                         type="button"
                         className={`w-9 h-9 rounded-lg border border-green-700 text-green-700 flex items-center justify-center ${
-                          row.highlight ? "bg-[#FCEFD8]" : "bg-white"
+                          row.highlight
+                            ? "bg-[#FCEFD8] dark:bg-orange-500/10"
+                            : "bg-white dark:bg-gray-800"
                         }`}
                         title="Preview"
                       >
@@ -229,10 +234,9 @@ export default function Pesanan() {
                         </svg>
                       </button>
 
-                      {/* edit */}
                       <button
                         type="button"
-                        className="w-9 h-9 rounded-lg border border-green-700 text-green-700 flex items-center justify-center bg-white"
+                        className="w-9 h-9 rounded-lg border border-green-700 text-green-700 flex items-center justify-center bg-white dark:bg-gray-800"
                         title="Edit"
                       >
                         <svg
@@ -257,14 +261,12 @@ export default function Pesanan() {
                     </div>
                   </div>
 
-                  {/* Makan Siang */}
                   <div className="col-span-5 flex items-center justify-between gap-3">
                     <div className="flex-1 text-sm text-gray-700 dark:text-gray-200">
                       {row.makan}
                     </div>
 
                     <div className="flex items-center gap-2">
-                      {/* camera solid */}
                       <button
                         type="button"
                         className="w-9 h-9 rounded-lg bg-green-800 text-white flex items-center justify-center"
@@ -290,10 +292,9 @@ export default function Pesanan() {
                         </svg>
                       </button>
 
-                      {/* edit */}
                       <button
                         type="button"
-                        className="w-9 h-9 rounded-lg border border-green-700 text-green-700 flex items-center justify-center bg-white"
+                        className="w-9 h-9 rounded-lg border border-green-700 text-green-700 flex items-center justify-center bg-white dark:bg-gray-800"
                         title="Edit"
                       >
                         <svg
@@ -324,11 +325,11 @@ export default function Pesanan() {
         </div>
 
         {/* RIGHT DETAIL CARD */}
-        <div className="col-span-12 xl:col-span-4 bg-white dark:bg-gray-800 rounded-xl shadow overflow-hidden">
+        <div className="col-span-12 xl:col-span-4 bg-gray-50 dark:bg-gray-900 rounded-xl shadow-md border border-gray-200 dark:border-gray-800 overflow-hidden">
           {/* TOP */}
-          <div className="p-6 border-b dark:border-gray-700">
+          <div className="p-6 border-b border-gray-200 dark:border-gray-700">
             <div className="flex gap-5">
-              <div className="w-24 h-24 rounded-2xl overflow-hidden bg-gray-100 shrink-0">
+              <div className="w-24 h-24 rounded-2xl overflow-hidden bg-gray-100 dark:bg-gray-800 shrink-0">
                 <img
                   src="/images/buburayam.png"
                   alt="Bubur Ayam"
@@ -349,10 +350,9 @@ export default function Pesanan() {
                     { label: "Protein", value: "43,7", unit: "P" },
                   ].map((x, idx) => (
                     <div key={idx} className="flex justify-between">
-                      <span className="text-gray-300">{x.label}</span>
+                      <span className="text-gray-400">{x.label}</span>
                       <span className="text-gray-700 dark:text-gray-200">
-                        {x.value}{" "}
-                        <span className="text-gray-400">{x.unit}</span>
+                        {x.value} <span className="text-gray-400">{x.unit}</span>
                       </span>
                     </div>
                   ))}
@@ -362,29 +362,29 @@ export default function Pesanan() {
           </div>
 
           {/* MIDDLE */}
-          <div className="px-6 py-5 border-b dark:border-gray-700">
+          <div className="px-6 py-5 border-b border-gray-200 dark:border-gray-700">
             <div className="grid grid-cols-12 gap-y-3 text-sm">
-              <div className="col-span-4 text-gray-300">Protein</div>
+              <div className="col-span-4 text-gray-400">Protein</div>
               <div className="col-span-8 text-gray-700 dark:text-gray-200">
                 Ayam, Telur Puyuh, Usus Ayam, Kacang
               </div>
 
-              <div className="col-span-4 text-gray-300">Karbohidrat</div>
+              <div className="col-span-4 text-gray-400">Karbohidrat</div>
               <div className="col-span-8 text-gray-700 dark:text-gray-200">
                 Nasi (Bubur)
               </div>
 
-              <div className="col-span-4 text-gray-300">Serat</div>
+              <div className="col-span-4 text-gray-400">Serat</div>
               <div className="col-span-8 text-gray-700 dark:text-gray-200">
                 Daun Bawang
               </div>
 
-              <div className="col-span-4 text-gray-300">Topping</div>
+              <div className="col-span-4 text-gray-400">Topping</div>
               <div className="col-span-8 text-gray-700 dark:text-gray-200">
                 Cakwey, Emping
               </div>
 
-              <div className="col-span-4 text-gray-300">Alat Makan</div>
+              <div className="col-span-4 text-gray-400">Alat Makan</div>
               <div className="col-span-8 text-gray-700 dark:text-gray-200">
                 No
               </div>
@@ -394,7 +394,7 @@ export default function Pesanan() {
           {/* BOTTOM */}
           <div className="p-6">
             <div className="grid grid-cols-12 gap-y-6 text-sm">
-              <div className="col-span-4 text-gray-300">Penerima #01</div>
+              <div className="col-span-4 text-gray-400">Penerima #01</div>
               <div className="col-span-8">
                 <p className="font-semibold text-gray-800 dark:text-white">
                   PAUD Harapan Bangsa
@@ -405,7 +405,7 @@ export default function Pesanan() {
                 </p>
               </div>
 
-              <div className="col-span-4 text-gray-300">Penerima #02</div>
+              <div className="col-span-4 text-gray-400">Penerima #02</div>
               <div className="col-span-8">
                 <p className="font-semibold text-gray-800 dark:text-white">
                   PAUD Mutiara Sejati
@@ -419,7 +419,7 @@ export default function Pesanan() {
           </div>
         </div>
       </div>
-      {/* ===================== END BOTTOM SECTION ===================== */}
+      {/* END BOTTOM SECTION */}
     </div>
   );
 }

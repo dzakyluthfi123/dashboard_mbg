@@ -26,6 +26,7 @@ import Laporan from "./pages/Laporan";
 import Pengaturan from "./pages/Pengaturan";
 import Pengiriman from "./pages/Pengiriman";
 import TambahPesanan from "./pages/TambahPesanan";
+import TambahPenerima from "./pages/TambahPenerima";
 import PesananBaru from "./pages/PesananBaru";
 import NewBatch from "./pages/NewBatch";
 import ModifikasiExisting from "./pages/ModifikasiExisting";
@@ -65,6 +66,10 @@ export default function App() {
             {/* Pesanan */}
             <Route path="/pesanan/tambah" element={<TambahPesanan />} />
             <Route path="/pesanan/menu" element={<PesananBaru />} />
+
+            {/* Penerima */}
+            <Route path="/penerima" element={<Penerima />} />
+            <Route path="/penerima/tambah" element={<TambahPenerima />} />
 
             {/* Batches */}
             <Route path="/batches/new" element={<NewBatch />} />

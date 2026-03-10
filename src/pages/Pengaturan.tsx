@@ -16,7 +16,6 @@ type ReceiverRow = {
 };
 
 export default function ReceiverSettings() {
-  // ===== TANGGAL OTOMATIS (ID) =====
   const today = new Date();
   const hari = today.toLocaleDateString("id-ID", { weekday: "long" });
   const tanggalLengkap = today.toLocaleDateString("id-ID", {
@@ -136,7 +135,7 @@ export default function ReceiverSettings() {
         startDate: "8/21/15",
       },
     ],
-    [],
+    []
   );
 
   const selected = rows[selectedIndex] ?? rows[0];
@@ -154,13 +153,13 @@ export default function ReceiverSettings() {
     `px-6 py-2 rounded-lg text-sm font-semibold transition border ${
       active
         ? "bg-green-800 text-white border-green-800"
-        : "bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 border-transparent"
+        : "bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 border-gray-200 dark:border-gray-700"
     }`;
 
   return (
-    <div className="space-y-6">
+    <div className="min-h-screen bg-gray-100 dark:bg-gray-950 p-4 md:p-6 space-y-6">
       {/* PAGE HEADER */}
-      <div className="bg-gray-100 dark:bg-gray-900 px-6 py-4 rounded-xl shadow-sm flex justify-between items-start">
+      <div className="bg-gray-50 dark:bg-gray-900 px-6 py-4 rounded-xl shadow-md border border-gray-200 dark:border-gray-800 flex justify-between items-start">
         <h1 className="text-lg font-bold text-green-800 dark:text-white">
           Receiver Settings
         </h1>
@@ -174,9 +173,9 @@ export default function ReceiverSettings() {
       </div>
 
       {/* MAIN CARD */}
-      <div className="bg-white dark:bg-gray-800 rounded-xl shadow border border-gray-200 dark:border-gray-700 overflow-hidden">
+      <div className="bg-gray-50 dark:bg-gray-900 rounded-xl shadow-md border border-gray-200 dark:border-gray-800 overflow-hidden">
         {/* Tabs */}
-        <div className="px-6 py-4 border-b dark:border-gray-700">
+        <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
           <div className="flex flex-wrap gap-3">
             {tabs.map((t) => (
               <button
@@ -195,9 +194,9 @@ export default function ReceiverSettings() {
         {tab === "penerima" && (
           <div className="grid grid-cols-12 min-h-[650px]">
             {/* LEFT TABLE */}
-            <div className="col-span-12 xl:col-span-6 border-r dark:border-gray-700">
+            <div className="col-span-12 xl:col-span-6 border-r border-gray-200 dark:border-gray-700">
               {/* Header columns */}
-              <div className="px-6 py-3 border-b dark:border-gray-700 grid grid-cols-12 text-xs font-semibold text-orange-500">
+              <div className="px-6 py-3 border-b border-gray-200 dark:border-gray-700 grid grid-cols-12 text-xs font-semibold text-orange-500 bg-white dark:bg-gray-800">
                 <div className="col-span-3">Penerima</div>
                 <div className="col-span-3">Penanggung Jawab</div>
                 <div className="col-span-3">Desa/ Kabupaten</div>
@@ -206,7 +205,7 @@ export default function ReceiverSettings() {
               </div>
 
               {/* Rows */}
-              <div className="divide-y dark:divide-gray-700 max-h-[650px] overflow-auto">
+              <div className="divide-y divide-gray-200 dark:divide-gray-700 max-h-[650px] overflow-auto">
                 {rows.map((r, idx) => {
                   const active = idx === selectedIndex;
                   return (
@@ -216,8 +215,8 @@ export default function ReceiverSettings() {
                       onClick={() => setSelectedIndex(idx)}
                       className={`w-full text-left px-6 py-4 grid grid-cols-12 text-sm items-center transition ${
                         active
-                          ? "bg-[#FCEFD8]"
-                          : "hover:bg-gray-50 dark:hover:bg-gray-700"
+                          ? "bg-[#FCEFD8] dark:bg-orange-500/10"
+                          : "hover:bg-gray-100 dark:hover:bg-gray-800"
                       }`}
                     >
                       <div className="col-span-3 font-semibold text-gray-700 dark:text-gray-200 truncate">
@@ -244,8 +243,8 @@ export default function ReceiverSettings() {
             {/* RIGHT FORMS */}
             <div className="col-span-12 xl:col-span-6 grid grid-cols-12">
               {/* Informasi Penerima */}
-              <div className="col-span-12 md:col-span-6 border-r dark:border-gray-700">
-                <div className="px-6 py-4 border-b dark:border-gray-700">
+              <div className="col-span-12 md:col-span-6 border-r border-gray-200 dark:border-gray-700">
+                <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
                   <h3 className="text-lg font-bold text-green-800 dark:text-white">
                     Informasi Penerima
                   </h3>
@@ -255,7 +254,7 @@ export default function ReceiverSettings() {
                   <div>
                     <label className="text-xs text-gray-500">Penerima</label>
                     <input
-                      className="mt-2 w-full border border-gray-200 dark:border-gray-700 rounded-lg px-4 py-3 text-sm bg-white dark:bg-gray-900"
+                      className="mt-2 w-full border border-gray-200 dark:border-gray-700 rounded-lg px-4 py-3 text-sm bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200"
                       value={selected.penerima}
                       readOnly
                     />
@@ -266,7 +265,7 @@ export default function ReceiverSettings() {
                       Nama Penanggung Jawab
                     </label>
                     <input
-                      className="mt-2 w-full border border-gray-200 dark:border-gray-700 rounded-lg px-4 py-3 text-sm bg-white dark:bg-gray-900"
+                      className="mt-2 w-full border border-gray-200 dark:border-gray-700 rounded-lg px-4 py-3 text-sm bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200"
                       defaultValue="Juli Suartini"
                     />
                   </div>
@@ -275,7 +274,7 @@ export default function ReceiverSettings() {
                     <label className="text-xs text-gray-500">
                       Jenis Instansi
                     </label>
-                    <select className="mt-2 w-full border border-gray-200 dark:border-gray-700 rounded-lg px-4 py-3 text-sm bg-white dark:bg-gray-900">
+                    <select className="mt-2 w-full border border-gray-200 dark:border-gray-700 rounded-lg px-4 py-3 text-sm bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200">
                       <option>Sekolah</option>
                       <option>PAUD</option>
                       <option>Pesantren</option>
@@ -287,7 +286,7 @@ export default function ReceiverSettings() {
                       Whatsapp no.
                     </label>
                     <input
-                      className="mt-2 w-full border border-gray-200 dark:border-gray-700 rounded-lg px-4 py-3 text-sm bg-white dark:bg-gray-900"
+                      className="mt-2 w-full border border-gray-200 dark:border-gray-700 rounded-lg px-4 py-3 text-sm bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200"
                       defaultValue="0813 828 88222"
                     />
                   </div>
@@ -295,14 +294,14 @@ export default function ReceiverSettings() {
                   <div>
                     <label className="text-xs text-gray-500">Email</label>
                     <input
-                      className="mt-2 w-full border border-gray-200 dark:border-gray-700 rounded-lg px-4 py-3 text-sm bg-white dark:bg-gray-900"
+                      className="mt-2 w-full border border-gray-200 dark:border-gray-700 rounded-lg px-4 py-3 text-sm bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200"
                       defaultValue="suartini.juli@gmail.com"
                     />
                   </div>
 
                   <div>
                     <label className="text-xs text-gray-500">Leads</label>
-                    <select className="mt-2 w-full border border-gray-200 dark:border-gray-700 rounded-lg px-4 py-3 text-sm bg-white dark:bg-gray-900">
+                    <select className="mt-2 w-full border border-gray-200 dark:border-gray-700 rounded-lg px-4 py-3 text-sm bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200">
                       <option>Marvin McKinney</option>
                       <option>Esther Howard</option>
                       <option>Kristin Watson</option>
@@ -313,21 +312,21 @@ export default function ReceiverSettings() {
 
               {/* Alamat Penerima */}
               <div className="col-span-12 md:col-span-6">
-                <div className="px-6 py-4 border-b dark:border-gray-700">
+                <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
                   <h3 className="text-lg font-bold text-green-800 dark:text-white">
                     Alamat Penerima
                   </h3>
                 </div>
 
                 <div className="p-6 space-y-4">
-                  <div className="border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                  <div className="border border-gray-200 dark:border-gray-700 rounded-xl p-4 bg-white dark:bg-gray-800">
                     <div className="space-y-4">
                       <div>
                         <label className="text-xs text-gray-500">
                           Nama Penerima
                         </label>
                         <input
-                          className="mt-2 w-full border border-gray-200 dark:border-gray-700 rounded-lg px-4 py-3 text-sm bg-white dark:bg-gray-900"
+                          className="mt-2 w-full border border-gray-200 dark:border-gray-700 rounded-lg px-4 py-3 text-sm bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-200"
                           defaultValue="SMK Karya Nasional"
                         />
                       </div>
@@ -337,7 +336,7 @@ export default function ReceiverSettings() {
                           Alamat Pengiriman
                         </label>
                         <textarea
-                          className="mt-2 w-full border border-gray-200 dark:border-gray-700 rounded-lg px-4 py-3 text-sm bg-white dark:bg-gray-900 min-h-[90px]"
+                          className="mt-2 w-full border border-gray-200 dark:border-gray-700 rounded-lg px-4 py-3 text-sm bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-200 min-h-[90px]"
                           defaultValue="Jl. Anggur Dalam No. 28"
                         />
                       </div>
@@ -345,7 +344,7 @@ export default function ReceiverSettings() {
                       <div className="grid grid-cols-2 gap-3">
                         <div>
                           <label className="text-xs text-gray-500">Kota</label>
-                          <select className="mt-2 w-full border border-gray-200 dark:border-gray-700 rounded-lg px-4 py-3 text-sm bg-white dark:bg-gray-900">
+                          <select className="mt-2 w-full border border-gray-200 dark:border-gray-700 rounded-lg px-4 py-3 text-sm bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-200">
                             <option>Select...</option>
                             <option>Malang</option>
                             <option>Probolinggo</option>
@@ -356,7 +355,7 @@ export default function ReceiverSettings() {
                           <label className="text-xs text-gray-500">
                             Kecamatan
                           </label>
-                          <select className="mt-2 w-full border border-gray-200 dark:border-gray-700 rounded-lg px-4 py-3 text-sm bg-white dark:bg-gray-900">
+                          <select className="mt-2 w-full border border-gray-200 dark:border-gray-700 rounded-lg px-4 py-3 text-sm bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-200">
                             <option>Select...</option>
                             <option>Klojen</option>
                             <option>Kedopok</option>
@@ -369,7 +368,7 @@ export default function ReceiverSettings() {
                           <label className="text-xs text-gray-500">
                             Kabupaten / Desa
                           </label>
-                          <select className="mt-2 w-full border border-gray-200 dark:border-gray-700 rounded-lg px-4 py-3 text-sm bg-white dark:bg-gray-900">
+                          <select className="mt-2 w-full border border-gray-200 dark:border-gray-700 rounded-lg px-4 py-3 text-sm bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-200">
                             <option>Select...</option>
                             <option>Kabupaten A</option>
                             <option>Desa B</option>
@@ -380,7 +379,7 @@ export default function ReceiverSettings() {
                           <label className="text-xs text-gray-500">
                             Kode Pos
                           </label>
-                          <select className="mt-2 w-full border border-gray-200 dark:border-gray-700 rounded-lg px-4 py-3 text-sm bg-white dark:bg-gray-900">
+                          <select className="mt-2 w-full border border-gray-200 dark:border-gray-700 rounded-lg px-4 py-3 text-sm bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-200">
                             <option>Select...</option>
                             <option>65111</option>
                             <option>67211</option>
@@ -437,7 +436,7 @@ export default function ReceiverSettings() {
 
                       <button
                         type="button"
-                        className="text-xs border border-green-800 text-green-800 px-4 py-2 rounded-lg"
+                        className="text-xs border border-green-800 text-green-800 dark:text-green-400 px-4 py-2 rounded-lg"
                         onClick={() => alert("Simulasi add address")}
                       >
                         Add Address
@@ -447,18 +446,18 @@ export default function ReceiverSettings() {
                 </div>
               </div>
 
-              {/* Footer buttons (Cancel / Save) */}
-              <div className="col-span-12 border-t dark:border-gray-700 p-6 flex items-center justify-end gap-4">
+              {/* Footer buttons */}
+              <div className="col-span-12 border-t border-gray-200 dark:border-gray-700 p-6 flex items-center justify-end gap-4">
                 <button
                   type="button"
-                  className="px-10 py-3 rounded-xl border border-green-800 text-green-800 font-semibold"
+                  className="px-10 py-3 rounded-xl border border-green-800 text-green-800 dark:text-green-400 font-semibold"
                   onClick={() => alert("Simulasi cancel")}
                 >
                   Cancel
                 </button>
                 <button
                   type="button"
-                  className="px-10 py-3 rounded-xl bg-green-800 text-white font-semibold"
+                  className="px-10 py-3 rounded-xl bg-green-800 text-white font-semibold hover:bg-green-700"
                   onClick={() => alert("Simulasi save")}
                 >
                   Save
@@ -485,7 +484,7 @@ export default function ReceiverSettings() {
             <SettingAccount />
           </div>
         )}
-        
+
         {tab === "shipper" && (
           <div className="p-4">
             <SettingShipper />

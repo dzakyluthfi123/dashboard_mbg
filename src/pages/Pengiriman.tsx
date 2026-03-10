@@ -3,7 +3,6 @@ import { useMemo, useState } from "react";
 type MenuType = "sarapan" | "siang";
 
 export default function Pengiriman() {
-  // ===== TANGGAL OTOMATIS =====
   const today = new Date();
   const hari = today.toLocaleDateString("id-ID", { weekday: "long" });
   const tanggalLengkap = today.toLocaleDateString("id-ID", {
@@ -12,7 +11,6 @@ export default function Pengiriman() {
     year: "numeric",
   });
 
-  // ===== STATE (SIMULASI) =====
   const [menuType, setMenuType] = useState<MenuType>("siang");
   const [selectedDay, setSelectedDay] = useState(30);
 
@@ -125,9 +123,9 @@ export default function Pengiriman() {
   const menuTitle = menuType === "siang" ? "Nasi Gudek Ayam" : "Bubur Ayam";
 
   return (
-    <div className="space-y-6">
+    <div className="min-h-screen bg-gray-100 dark:bg-gray-950 p-4 md:p-6 space-y-6">
       {/* HEADER PAGE */}
-      <div className="bg-gray-100 dark:bg-gray-900 px-6 py-4 rounded-xl shadow-sm flex justify-between items-center">
+      <div className="bg-gray-50 dark:bg-gray-900 px-6 py-4 rounded-xl shadow-md border border-gray-200 dark:border-gray-800 flex justify-between items-center">
         <h1 className="text-lg font-bold text-green-800 dark:text-white">
           Pengemasan & Pengiriman
         </h1>
@@ -137,44 +135,16 @@ export default function Pengiriman() {
             <p>{hari}</p>
             <p>{tanggalLengkap}</p>
           </div>
-
-          {/* <button
-            type="button"
-            className="w-9 h-9 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 flex items-center justify-center"
-            title="Logout (simulasi)"
-            onClick={() => alert("Simulasi logout")}
-          >
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-              <path
-                d="M10 7V5C10 3.89543 10.8954 3 12 3H19C20.1046 3 21 3.89543 21 5V19C21 20.1046 20.1046 21 19 21H12C10.8954 21 10 20.1046 10 19V17"
-                stroke="currentColor"
-                strokeWidth="2"
-              />
-              <path
-                d="M13 12H3"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-              />
-              <path
-                d="M6 9L3 12L6 15"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </button> */}
         </div>
       </div>
 
-      {/* ====== 3 KOLOM BERDERET (6-3-3) ====== */}
+      {/* 3 KOLOM */}
       <div className="grid grid-cols-12 gap-6">
-        {/* LEFT (xl:6) */}
-        <div className="col-span-12 xl:col-span-6 bg-white dark:bg-gray-800 rounded-xl shadow overflow-hidden">
+        {/* LEFT */}
+        <div className="col-span-12 xl:col-span-6 bg-gray-50 dark:bg-gray-900 rounded-xl shadow-md overflow-hidden border border-gray-200 dark:border-gray-800">
           {/* Calendar */}
           <div className="p-5">
-            <div className="rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden">
+            <div className="rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden bg-white dark:bg-gray-800">
               <div className="bg-green-800 text-white text-xs font-semibold py-2 text-center">
                 February, 2022
               </div>
@@ -182,7 +152,7 @@ export default function Pengiriman() {
               <div className="p-3 flex items-center gap-3">
                 <button
                   type="button"
-                  className="w-8 h-8 rounded-lg border border-gray-200 dark:border-gray-700 flex items-center justify-center text-gray-600 dark:text-gray-200"
+                  className="w-8 h-8 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 flex items-center justify-center text-gray-600 dark:text-gray-200"
                   onClick={() => alert("Simulasi prev minggu")}
                 >
                   ‹
@@ -209,7 +179,7 @@ export default function Pengiriman() {
 
                 <button
                   type="button"
-                  className="w-8 h-8 rounded-lg border border-gray-200 dark:border-gray-700 flex items-center justify-center text-gray-600 dark:text-gray-200"
+                  className="w-8 h-8 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 flex items-center justify-center text-gray-600 dark:text-gray-200"
                   onClick={() => alert("Simulasi next minggu")}
                 >
                   ›
@@ -227,7 +197,7 @@ export default function Pengiriman() {
                   className={`text-xs px-3 py-2 rounded-lg ${
                     menuType === "sarapan"
                       ? "bg-green-800 text-white"
-                      : "border border-green-800 text-green-800"
+                      : "border border-green-800 text-green-800 dark:text-green-400 bg-white dark:bg-gray-800"
                   }`}
                 >
                   Sarapan
@@ -237,7 +207,7 @@ export default function Pengiriman() {
                   className={`text-xs px-3 py-2 rounded-lg ${
                     menuType === "siang"
                       ? "bg-green-800 text-white"
-                      : "border border-green-800 text-green-800"
+                      : "border border-green-800 text-green-800 dark:text-green-400 bg-white dark:bg-gray-800"
                   }`}
                 >
                   Makan Siang
@@ -279,7 +249,7 @@ export default function Pengiriman() {
           </div>
 
           {/* Table */}
-          <div className="border-t dark:border-gray-700">
+          <div className="border-t border-gray-200 dark:border-gray-700">
             <div className="px-5 py-3 grid grid-cols-12 text-xs font-semibold text-orange-500">
               <div className="col-span-2">Nomor Pesanan</div>
               <div className="col-span-2">Logistik</div>
@@ -288,11 +258,11 @@ export default function Pengiriman() {
               <div className="col-span-1 text-right">Qty</div>
             </div>
 
-            <div className="divide-y dark:divide-gray-700">
+            <div className="divide-y divide-gray-200 dark:divide-gray-700">
               {orders.map((o, idx) => (
                 <div
                   key={`${o.no}-${idx}`}
-                  className="px-5 py-4 grid grid-cols-12 text-sm items-start hover:bg-gray-50 dark:hover:bg-gray-700 cursor-pointer"
+                  className="px-5 py-4 grid grid-cols-12 text-sm items-start hover:bg-gray-100 dark:hover:bg-gray-800 cursor-pointer transition"
                   onClick={() => {
                     setSelectedOrderId("WLD-220001");
                     alert(`Simulasi pilih order: ${o.no}`);
@@ -319,15 +289,15 @@ export default function Pengiriman() {
           </div>
         </div>
 
-        {/* MIDDLE (xl:3) */}
-        <div className="col-span-12 xl:col-span-3 bg-white dark:bg-gray-800 rounded-xl shadow overflow-hidden">
-          <div className="p-5 border-b dark:border-gray-700">
+        {/* MIDDLE */}
+        <div className="col-span-12 xl:col-span-3 bg-gray-50 dark:bg-gray-900 rounded-xl shadow-md overflow-hidden border border-gray-200 dark:border-gray-800">
+          <div className="p-5 border-b border-gray-200 dark:border-gray-700">
             <h3 className="font-bold text-green-800 dark:text-white">
               Check Kualitas & Kuantitas
             </h3>
           </div>
 
-          <div className="px-5 py-4 border-b dark:border-gray-700">
+          <div className="px-5 py-4 border-b border-gray-200 dark:border-gray-700">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-xs text-gray-500">Kualitas Makanan</p>
@@ -342,7 +312,7 @@ export default function Pengiriman() {
                 className={`w-6 h-6 rounded-md border flex items-center justify-center ${
                   qcMakanan
                     ? "bg-green-800 border-green-800 text-white"
-                    : "border-green-800 text-green-800"
+                    : "border-green-800 text-green-800 dark:text-green-400"
                 }`}
               >
                 {qcMakanan && "✓"}
@@ -363,7 +333,7 @@ export default function Pengiriman() {
                 className={`w-6 h-6 rounded-md border flex items-center justify-center ${
                   qcKuantitas
                     ? "bg-green-800 border-green-800 text-white"
-                    : "border-green-800 text-green-800"
+                    : "border-green-800 text-green-800 dark:text-green-400"
                 }`}
               >
                 {qcKuantitas && "✓"}
@@ -371,13 +341,13 @@ export default function Pengiriman() {
             </div>
           </div>
 
-          <div className="p-5 border-b dark:border-gray-700">
+          <div className="p-5 border-b border-gray-200 dark:border-gray-700">
             <h3 className="font-bold text-green-800 dark:text-white">
               Check Pengiriman
             </h3>
           </div>
 
-          <div className="px-5 py-4 border-b dark:border-gray-700">
+          <div className="px-5 py-4 border-b border-gray-200 dark:border-gray-700">
             <p className="text-sm font-semibold text-gray-700 dark:text-gray-200">
               WLD-220001-01
             </p>
@@ -390,17 +360,17 @@ export default function Pengiriman() {
 
             <button
               type="button"
-              className="mt-4 text-xs border border-green-800 text-green-800 px-4 py-2 rounded-lg"
+              className="mt-4 text-xs border border-green-800 text-green-800 dark:text-green-400 px-4 py-2 rounded-lg"
               onClick={() => alert("Simulasi ubah alamat")}
             >
               Ubah Alamat
             </button>
           </div>
 
-          <div className="px-5 py-4 border-b dark:border-gray-700">
+          <div className="px-5 py-4 border-b border-gray-200 dark:border-gray-700">
             <p className="text-xs text-gray-500">Pengantar</p>
             <select
-              className="mt-2 w-full text-sm border border-gray-200 dark:border-gray-700 rounded-lg px-3 py-2 bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-200"
+              className="mt-2 w-full text-sm border border-gray-200 dark:border-gray-700 rounded-lg px-3 py-2 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200"
               value={driver}
               onChange={(e) => setDriver(e.target.value)}
             >
@@ -426,7 +396,7 @@ export default function Pengiriman() {
                 className={`w-6 h-6 rounded-md border flex items-center justify-center ${
                   konfirmasiPengantar
                     ? "bg-green-800 border-green-800 text-white"
-                    : "border-green-800 text-green-800"
+                    : "border-green-800 text-green-800 dark:text-green-400"
                 }`}
               >
                 {konfirmasiPengantar && "✓"}
@@ -436,7 +406,7 @@ export default function Pengiriman() {
             <div className="mt-6 flex items-center gap-3">
               <button
                 type="button"
-                className="w-12 h-12 rounded-lg bg-gray-800 text-white flex items-center justify-center"
+                className="w-12 h-12 rounded-lg bg-gray-800 dark:bg-gray-700 text-white flex items-center justify-center"
                 onClick={() => alert("Simulasi print")}
                 title="Print"
               >
@@ -445,7 +415,7 @@ export default function Pengiriman() {
 
               <button
                 type="button"
-                className="flex-1 h-12 rounded-lg bg-green-800 text-white font-semibold"
+                className="flex-1 h-12 rounded-lg bg-green-800 text-white font-semibold hover:bg-green-700"
                 onClick={() =>
                   alert(
                     `Simulasi save\nQC Makanan: ${qcMakanan}\nQC Kuantitas: ${qcKuantitas}\nKonfirmasi: ${konfirmasiPengantar}\nDriver: ${driver}`
@@ -458,9 +428,9 @@ export default function Pengiriman() {
           </div>
         </div>
 
-        {/* RIGHT (xl:3) */}
-        <div className="col-span-12 xl:col-span-3 bg-white dark:bg-gray-800 rounded-xl shadow overflow-hidden border border-gray-200 dark:border-gray-700">
-          <div className="p-5 border-b dark:border-gray-700 flex items-center justify-between">
+        {/* RIGHT */}
+        <div className="col-span-12 xl:col-span-3 bg-gray-50 dark:bg-gray-900 rounded-xl shadow-md overflow-hidden border border-gray-200 dark:border-gray-800">
+          <div className="p-5 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between">
             <h3 className="font-bold text-green-800 dark:text-white">
               Order Release
             </h3>
@@ -468,7 +438,7 @@ export default function Pengiriman() {
             <div className="flex items-center gap-2">
               <button
                 type="button"
-                className="w-9 h-9 rounded-lg bg-gray-800 text-white flex items-center justify-center"
+                className="w-9 h-9 rounded-lg bg-gray-800 dark:bg-gray-700 text-white flex items-center justify-center"
                 onClick={() => alert("Simulasi print order release")}
                 title="Print"
               >
@@ -489,7 +459,7 @@ export default function Pengiriman() {
           </div>
 
           <div className="p-5">
-            <div className="rounded-xl border border-green-800 overflow-hidden">
+            <div className="rounded-xl border border-green-800 overflow-hidden bg-white dark:bg-gray-800">
               <div className="bg-green-800 text-white text-xs px-4 py-2 flex items-center justify-between">
                 <span>Delivered</span>
                 <button
@@ -501,7 +471,7 @@ export default function Pengiriman() {
                 </button>
               </div>
 
-              <div className="p-4 border-b dark:border-gray-700">
+              <div className="p-4 border-b border-gray-200 dark:border-gray-700">
                 <div className="flex items-start justify-between gap-4">
                   <div>
                     <p className="text-sm font-semibold text-gray-800 dark:text-white">
@@ -522,7 +492,7 @@ export default function Pengiriman() {
                 </div>
               </div>
 
-              <div className="p-4 border-b dark:border-gray-700">
+              <div className="p-4 border-b border-gray-200 dark:border-gray-700">
                 <div className="flex items-center justify-between">
                   <p className="text-sm font-semibold text-green-800 dark:text-white">
                     Delivery Info
@@ -530,7 +500,7 @@ export default function Pengiriman() {
                   <button
                     type="button"
                     onClick={() => alert("Simulasi collapse")}
-                    className="text-green-800"
+                    className="text-green-800 dark:text-green-400"
                     title="Collapse"
                   >
                     ^
@@ -552,7 +522,7 @@ export default function Pengiriman() {
                   {rightOrder.notes}
                 </p>
 
-                <div className="mt-4 rounded-xl overflow-hidden bg-gray-100">
+                <div className="mt-4 rounded-xl overflow-hidden bg-gray-100 dark:bg-gray-700">
                   <img
                     src={rightOrder.image}
                     alt="Foto Pengemasan"
@@ -566,9 +536,9 @@ export default function Pengiriman() {
               </div>
             </div>
 
-            <div className="mt-4 rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden">
+            <div className="mt-4 rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden bg-white dark:bg-gray-800">
               <div
-                className="p-4 cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-700"
+                className="p-4 cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-700 transition"
                 onClick={() => alert("Simulasi buka recipient detail")}
               >
                 <div className="flex items-start justify-between gap-4">

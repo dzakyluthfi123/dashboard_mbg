@@ -1,7 +1,6 @@
 import { useMemo, useState } from "react";
 
 export default function Dapur() {
-  // ===== TANGGAL OTOMATIS (sama seperti Pesanan) =====
   const today = new Date();
 
   const hari = today.toLocaleDateString("id-ID", { weekday: "long" });
@@ -11,7 +10,6 @@ export default function Dapur() {
     year: "numeric",
   });
 
-  // ===== STATE (SIMULASI KLIK) =====
   const [menuType, setMenuType] = useState<"sarapan" | "siang">("siang");
   const [selectedDay, setSelectedDay] = useState(30);
 
@@ -32,7 +30,6 @@ export default function Dapur() {
     { name: "Bubur Ayam Khas Cirebon - Polosan", qty: 9, done: false },
   ]);
 
-  // ===== DATA =====
   const calendarDays = useMemo(
     () => [
       { day: 26, label: "MON" },
@@ -157,7 +154,8 @@ export default function Dapur() {
     []
   );
 
-  const daftarMasakan = menuType === "sarapan" ? daftarMasakanSarapan : daftarMasakanSiang;
+  const daftarMasakan =
+    menuType === "sarapan" ? daftarMasakanSarapan : daftarMasakanSiang;
   const ticketing = menuType === "sarapan" ? ticketingSarapan : ticketingSiang;
 
   const sarapanCard = useMemo(
@@ -191,10 +189,12 @@ export default function Dapur() {
   );
 
   return (
-    <div className="space-y-6">
+    <div className="min-h-screen bg-gray-100 dark:bg-gray-950 p-4 md:p-6 space-y-6">
       {/* HEADER PAGE */}
-      <div className="bg-gray-100 dark:bg-gray-900 px-6 py-4 rounded-xl shadow-sm flex justify-between items-center">
-        <h1 className="text-lg font-bold text-green-800 dark:text-white">Dapur</h1>
+      <div className="bg-gray-50 dark:bg-gray-900 px-6 py-4 rounded-xl shadow-md border border-gray-200 dark:border-gray-800 flex justify-between items-center">
+        <h1 className="text-lg font-bold text-green-800 dark:text-white">
+          Dapur
+        </h1>
 
         <div className="text-sm text-gray-500 dark:text-gray-400 text-right capitalize">
           <p>{hari}</p>
@@ -203,11 +203,11 @@ export default function Dapur() {
       </div>
 
       {/* TOP ROW: CALENDAR + MENU CARDS */}
-      <div className="bg-white dark:bg-gray-800 rounded-xl shadow overflow-hidden">
+      <div className="bg-gray-50 dark:bg-gray-900 rounded-xl shadow-md border border-gray-200 dark:border-gray-800 overflow-hidden">
         <div className="p-5 grid grid-cols-12 gap-5 items-stretch">
           {/* Calendar */}
           <div className="col-span-12 xl:col-span-5">
-            <div className="rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden">
+            <div className="rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden bg-white dark:bg-gray-800">
               <div className="bg-green-800 text-white text-xs font-semibold py-2 text-center">
                 February, 2022
               </div>
@@ -215,7 +215,7 @@ export default function Dapur() {
               <div className="p-3 flex items-center gap-3">
                 <button
                   type="button"
-                  className="w-8 h-8 rounded-lg border border-gray-200 dark:border-gray-700 flex items-center justify-center text-gray-600 dark:text-gray-200"
+                  className="w-8 h-8 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 flex items-center justify-center text-gray-600 dark:text-gray-200"
                   onClick={() => alert("Simulasi prev minggu")}
                 >
                   ‹
@@ -240,7 +240,7 @@ export default function Dapur() {
 
                 <button
                   type="button"
-                  className="w-8 h-8 rounded-lg border border-gray-200 dark:border-gray-700 flex items-center justify-center text-gray-600 dark:text-gray-200"
+                  className="w-8 h-8 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 flex items-center justify-center text-gray-600 dark:text-gray-200"
                   onClick={() => alert("Simulasi next minggu")}
                 >
                   ›
@@ -260,15 +260,19 @@ export default function Dapur() {
 
           {/* Sarapan card */}
           <div className="col-span-12 xl:col-span-3">
-            <div className="rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden h-full">
+            <div className="rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden h-full bg-white dark:bg-gray-800">
               <div className="bg-green-800 text-white px-4 py-2 flex items-center justify-between text-xs font-semibold">
                 <span>Sarapan</span>
                 <span>{sarapanCard.pax} pax</span>
               </div>
 
               <div className="p-4 flex gap-4">
-                <div className="w-20 h-20 rounded-xl overflow-hidden bg-gray-100 shrink-0">
-                  <img src={sarapanCard.img} alt="Sarapan" className="w-full h-full object-cover" />
+                <div className="w-20 h-20 rounded-xl overflow-hidden bg-gray-100 dark:bg-gray-700 shrink-0">
+                  <img
+                    src={sarapanCard.img}
+                    alt="Sarapan"
+                    className="w-full h-full object-cover"
+                  />
                 </div>
 
                 <div className="flex-1">
@@ -280,14 +284,16 @@ export default function Dapur() {
                     {sarapanCard.stats.map((s) => (
                       <div key={s.label} className="contents">
                         <div className="text-gray-400">{s.label}</div>
-                        <div className="text-right text-gray-700 dark:text-gray-200">{s.value}</div>
+                        <div className="text-right text-gray-700 dark:text-gray-200">
+                          {s.value}
+                        </div>
                       </div>
                     ))}
                   </div>
 
                   <button
                     type="button"
-                    className="mt-3 text-xs border border-green-800 text-green-800 px-3 py-1 rounded-lg"
+                    className="mt-3 text-xs border border-green-800 text-green-800 dark:text-green-400 px-3 py-1 rounded-lg"
                     onClick={() => alert("Simulasi lihat resep Sarapan")}
                   >
                     Lihat Resep Masakan
@@ -299,14 +305,14 @@ export default function Dapur() {
 
           {/* Makan siang card */}
           <div className="col-span-12 xl:col-span-4">
-            <div className="rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden h-full">
+            <div className="rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden h-full bg-white dark:bg-gray-800">
               <div className="bg-green-800 text-white px-4 py-2 flex items-center justify-between text-xs font-semibold">
                 <span>Makan Siang</span>
                 <span>{siangCard.pax} pax</span>
               </div>
 
               <div className="p-4 flex gap-4">
-                <div className="w-20 h-20 rounded-xl overflow-hidden bg-gray-100 shrink-0">
+                <div className="w-20 h-20 rounded-xl overflow-hidden bg-gray-100 dark:bg-gray-700 shrink-0">
                   <img
                     src={siangCard.img}
                     alt="Makan Siang"
@@ -326,14 +332,16 @@ export default function Dapur() {
                     {siangCard.stats.map((s) => (
                       <div key={s.label} className="contents">
                         <div className="text-gray-400">{s.label}</div>
-                        <div className="text-right text-gray-700 dark:text-gray-200">{s.value}</div>
+                        <div className="text-right text-gray-700 dark:text-gray-200">
+                          {s.value}
+                        </div>
                       </div>
                     ))}
                   </div>
 
                   <button
                     type="button"
-                    className="mt-3 text-xs border border-green-800 text-green-800 px-3 py-1 rounded-lg"
+                    className="mt-3 text-xs border border-green-800 text-green-800 dark:text-green-400 px-3 py-1 rounded-lg"
                     onClick={() => alert("Simulasi lihat resep Makan Siang")}
                   >
                     Lihat Resep Masakan
@@ -348,9 +356,11 @@ export default function Dapur() {
       {/* BOTTOM 3 PANELS */}
       <div className="grid grid-cols-12 gap-6">
         {/* Daftar Masakan */}
-        <div className="col-span-12 xl:col-span-4 bg-white dark:bg-gray-800 rounded-xl shadow overflow-hidden">
-          <div className="px-5 py-4 border-b dark:border-gray-700 flex items-center justify-between">
-            <h3 className="font-bold text-green-800 dark:text-white">Daftar Masakan</h3>
+        <div className="col-span-12 xl:col-span-4 bg-gray-50 dark:bg-gray-900 rounded-xl shadow-md border border-gray-200 dark:border-gray-800 overflow-hidden">
+          <div className="px-5 py-4 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between">
+            <h3 className="font-bold text-green-800 dark:text-white">
+              Daftar Masakan
+            </h3>
 
             <div className="flex items-center gap-2">
               <button
@@ -358,7 +368,7 @@ export default function Dapur() {
                 className={`text-xs px-3 py-1 rounded-lg ${
                   menuType === "sarapan"
                     ? "bg-green-800 text-white"
-                    : "border border-green-800 text-green-800"
+                    : "border border-green-800 text-green-800 dark:text-green-400"
                 }`}
               >
                 Sarapan
@@ -368,7 +378,7 @@ export default function Dapur() {
                 className={`text-xs px-3 py-1 rounded-lg ${
                   menuType === "siang"
                     ? "bg-green-800 text-white"
-                    : "border border-green-800 text-green-800"
+                    : "border border-green-800 text-green-800 dark:text-green-400"
                 }`}
               >
                 Makan Siang
@@ -398,7 +408,9 @@ export default function Dapur() {
                         className="grid grid-cols-12 gap-3 items-center"
                       >
                         <div className="col-span-5">
-                          <p className="text-xs text-gray-600 dark:text-gray-300">{it.name}</p>
+                          <p className="text-xs text-gray-600 dark:text-gray-300">
+                            {it.name}
+                          </p>
                         </div>
 
                         <div className="col-span-5">
@@ -425,8 +437,8 @@ export default function Dapur() {
         </div>
 
         {/* Ticketing */}
-        <div className="col-span-12 xl:col-span-4 bg-white dark:bg-gray-800 rounded-xl shadow overflow-hidden">
-          <div className="px-5 py-4 border-b dark:border-gray-700 flex items-center justify-between">
+        <div className="col-span-12 xl:col-span-4 bg-gray-50 dark:bg-gray-900 rounded-xl shadow-md border border-gray-200 dark:border-gray-800 overflow-hidden">
+          <div className="px-5 py-4 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between">
             <h3 className="font-bold text-green-800 dark:text-white">Ticketing</h3>
 
             <div className="flex items-center gap-2">
@@ -435,7 +447,7 @@ export default function Dapur() {
                 className={`text-xs px-3 py-1 rounded-lg ${
                   menuType === "sarapan"
                     ? "bg-green-800 text-white"
-                    : "border border-green-800 text-green-800"
+                    : "border border-green-800 text-green-800 dark:text-green-400"
                 }`}
               >
                 Sarapan
@@ -445,7 +457,7 @@ export default function Dapur() {
                 className={`text-xs px-3 py-1 rounded-lg ${
                   menuType === "siang"
                     ? "bg-green-800 text-white"
-                    : "border border-green-800 text-green-800"
+                    : "border border-green-800 text-green-800 dark:text-green-400"
                 }`}
               >
                 Makan Siang
@@ -453,7 +465,7 @@ export default function Dapur() {
 
               <button
                 type="button"
-                className="ml-1 w-9 h-9 rounded-lg bg-gray-800 text-white flex items-center justify-center"
+                className="ml-1 w-9 h-9 rounded-lg bg-gray-800 dark:bg-gray-700 text-white flex items-center justify-center"
                 title="Print"
                 onClick={() => alert("Simulasi print ticket")}
               >
@@ -489,9 +501,11 @@ export default function Dapur() {
         </div>
 
         {/* Pengemasan */}
-        <div className="col-span-12 xl:col-span-4 bg-white dark:bg-gray-800 rounded-xl shadow overflow-hidden">
-          <div className="px-5 py-4 border-b dark:border-gray-700 flex items-center justify-between">
-            <h3 className="font-bold text-green-800 dark:text-white">Pengemasan</h3>
+        <div className="col-span-12 xl:col-span-4 bg-gray-50 dark:bg-gray-900 rounded-xl shadow-md border border-gray-200 dark:border-gray-800 overflow-hidden">
+          <div className="px-5 py-4 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between">
+            <h3 className="font-bold text-green-800 dark:text-white">
+              Pengemasan
+            </h3>
 
             <div className="flex items-center gap-2">
               <button
@@ -499,7 +513,7 @@ export default function Dapur() {
                 className={`text-xs px-3 py-1 rounded-lg ${
                   menuType === "sarapan"
                     ? "bg-green-800 text-white"
-                    : "border border-green-800 text-green-800"
+                    : "border border-green-800 text-green-800 dark:text-green-400"
                 }`}
               >
                 Sarapan
@@ -509,7 +523,7 @@ export default function Dapur() {
                 className={`text-xs px-3 py-1 rounded-lg ${
                   menuType === "siang"
                     ? "bg-green-800 text-white"
-                    : "border border-green-800 text-green-800"
+                    : "border border-green-800 text-green-800 dark:text-green-400"
                 }`}
               >
                 Makan Siang
@@ -517,7 +531,7 @@ export default function Dapur() {
 
               <button
                 type="button"
-                className="ml-1 w-9 h-9 rounded-lg bg-gray-800 text-white flex items-center justify-center"
+                className="ml-1 w-9 h-9 rounded-lg bg-gray-800 dark:bg-gray-700 text-white flex items-center justify-center"
                 title="Print"
                 onClick={() => alert("Simulasi print pengemasan")}
               >
@@ -527,15 +541,19 @@ export default function Dapur() {
           </div>
 
           <div className="p-5">
-            <div className="divide-y dark:divide-gray-700">
+            <div className="divide-y divide-gray-200 dark:divide-gray-700">
               {packingList.map((p) => (
                 <div key={p.name} className="py-3 flex items-center justify-between">
                   <div className="pr-4">
-                    <p className="text-xs text-gray-700 dark:text-gray-200">{p.name}</p>
+                    <p className="text-xs text-gray-700 dark:text-gray-200">
+                      {p.name}
+                    </p>
                   </div>
 
                   <div className="flex items-center gap-4">
-                    <span className="text-xs text-gray-500 w-6 text-right">{p.qty}</span>
+                    <span className="text-xs text-gray-500 w-6 text-right">
+                      {p.qty}
+                    </span>
 
                     <span
                       onClick={() =>
@@ -548,7 +566,7 @@ export default function Dapur() {
                       className={`cursor-pointer w-6 h-6 rounded-md border flex items-center justify-center transition ${
                         p.done
                           ? "bg-green-800 border-green-800 text-white"
-                          : "border-green-800 text-green-800"
+                          : "border-green-800 text-green-800 dark:text-green-400"
                       }`}
                       title={p.done ? "Done" : "Not Done"}
                     >
@@ -564,7 +582,7 @@ export default function Dapur() {
               onClick={() =>
                 setPackingList((prev) => prev.map((x) => ({ ...x, done: true })))
               }
-              className="mt-4 w-full text-xs bg-green-800 text-white py-2 rounded-lg"
+              className="mt-4 w-full text-xs bg-green-800 text-white py-2 rounded-lg hover:bg-green-700"
             >
               Tandai Semua Selesai (Simulasi)
             </button>

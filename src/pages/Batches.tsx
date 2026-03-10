@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 type TabType = "upcoming" | "history";
 
 export default function Batches() {
-  // ===== TANGGAL OTOMATIS (EN seperti contoh gambar) =====
   const today = new Date();
   const dayName = today.toLocaleDateString("en-US", { weekday: "long" });
   const fullDate = today.toLocaleDateString("en-US", {
@@ -139,13 +138,13 @@ export default function Batches() {
     `px-4 py-2 rounded-lg text-sm font-semibold border transition ${
       active
         ? "bg-green-800 text-white border-green-800"
-        : "bg-white dark:bg-gray-800 text-green-800 border-green-800"
+        : "bg-white dark:bg-gray-800 text-green-800 dark:text-green-400 border-green-800"
     }`;
 
   return (
-    <div className="space-y-6">
+    <div className="min-h-screen bg-gray-100 dark:bg-gray-950 p-4 md:p-6 space-y-6">
       {/* TOP HEADER */}
-      <div className="flex items-start justify-between">
+      <div className="bg-gray-50 dark:bg-gray-900 px-6 py-4 rounded-xl shadow-md border border-gray-200 dark:border-gray-800 flex items-start justify-between">
         <div className="flex items-center gap-4">
           <button
             onClick={() => navigate("/batches/new")}
@@ -165,16 +164,14 @@ export default function Batches() {
             <div>{dayName}</div>
             <div>{fullDate}</div>
           </div>
-
-         
         </div>
       </div>
 
       {/* MAIN GRID */}
       <div className="grid grid-cols-12 gap-6">
         {/* LEFT: ONGOING */}
-        <div className="col-span-12 xl:col-span-4 bg-white dark:bg-gray-800 rounded-xl shadow overflow-hidden border border-gray-200 dark:border-gray-700">
-          <div className="p-5 border-b dark:border-gray-700">
+        <div className="col-span-12 xl:col-span-4 bg-gray-50 dark:bg-gray-900 rounded-xl shadow-md overflow-hidden border border-gray-200 dark:border-gray-800">
+          <div className="p-5 border-b border-gray-200 dark:border-gray-700">
             <h2 className="text-lg font-bold text-green-800 dark:text-white">
               Ongoing:{" "}
               <span className="text-sm font-semibold text-gray-500">
@@ -185,14 +182,14 @@ export default function Batches() {
 
           <div className="p-5 space-y-6">
             {/* Sarapan card */}
-            <div className="rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden">
+            <div className="rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden bg-white dark:bg-gray-800">
               <div className="bg-green-800 text-white text-xs font-semibold px-4 py-2 flex items-center justify-between">
                 <span>Sarapan</span>
                 <span>{ongoing.sarapan.pax} pax</span>
               </div>
 
               <div className="p-4 flex gap-4">
-                <div className="w-36 h-36 rounded-xl overflow-hidden bg-gray-100 shrink-0">
+                <div className="w-36 h-36 rounded-xl overflow-hidden bg-gray-100 dark:bg-gray-700 shrink-0">
                   <img
                     src={ongoing.sarapan.img}
                     alt="Sarapan"
@@ -221,7 +218,7 @@ export default function Batches() {
                   </div>
 
                   <button
-                    className="mt-4 text-xs border border-green-800 text-green-800 px-3 py-2 rounded-lg"
+                    className="mt-4 text-xs border border-green-800 text-green-800 dark:text-green-400 px-3 py-2 rounded-lg"
                     onClick={() => alert("Simulasi lihat resep sarapan")}
                   >
                     Lihat Resep Masakan
@@ -231,14 +228,14 @@ export default function Batches() {
             </div>
 
             {/* Makan Siang card */}
-            <div className="rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden">
+            <div className="rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden bg-white dark:bg-gray-800">
               <div className="bg-green-800 text-white text-xs font-semibold px-4 py-2 flex items-center justify-between">
                 <span>Makan Siang</span>
                 <span>{ongoing.siang.pax} pax</span>
               </div>
 
               <div className="p-4 flex gap-4">
-                <div className="w-36 h-36 rounded-xl overflow-hidden bg-gray-100 shrink-0">
+                <div className="w-36 h-36 rounded-xl overflow-hidden bg-gray-100 dark:bg-gray-700 shrink-0">
                   <img
                     src={ongoing.siang.img}
                     alt="Makan Siang"
@@ -267,7 +264,7 @@ export default function Batches() {
                   </div>
 
                   <button
-                    className="mt-4 text-xs border border-green-800 text-green-800 px-3 py-2 rounded-lg"
+                    className="mt-4 text-xs border border-green-800 text-green-800 dark:text-green-400 px-3 py-2 rounded-lg"
                     onClick={() => alert("Simulasi lihat resep siang")}
                   >
                     Lihat Resep Masakan
@@ -279,9 +276,9 @@ export default function Batches() {
         </div>
 
         {/* RIGHT: UPCOMING / HISTORY */}
-        <div className="col-span-12 xl:col-span-8 bg-white dark:bg-gray-800 rounded-xl shadow overflow-hidden border border-gray-200 dark:border-gray-700">
+        <div className="col-span-12 xl:col-span-8 bg-gray-50 dark:bg-gray-900 rounded-xl shadow-md overflow-hidden border border-gray-200 dark:border-gray-800">
           {/* Tabs + Filter */}
-          <div className="p-5 border-b dark:border-gray-700 flex items-center justify-between">
+          <div className="p-5 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between">
             <div className="flex items-center gap-3">
               <button
                 className={pillBtn(tab === "upcoming")}
@@ -292,7 +289,7 @@ export default function Batches() {
                   className={`ml-2 text-xs px-2 py-0.5 rounded-full ${
                     tab === "upcoming"
                       ? "bg-white/20 text-white"
-                      : "bg-gray-100 text-gray-500"
+                      : "bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-300"
                   }`}
                 >
                   75
@@ -308,7 +305,7 @@ export default function Batches() {
                   className={`ml-2 text-xs px-2 py-0.5 rounded-full ${
                     tab === "history"
                       ? "bg-white/20 text-white"
-                      : "bg-gray-100 text-gray-500"
+                      : "bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-300"
                   }`}
                 >
                   16
@@ -352,7 +349,7 @@ export default function Batches() {
                               className={`w-full text-left text-sm px-3 py-2 rounded-lg border transition ${
                                 b.activeDay === d
                                   ? "bg-green-800 text-white border-green-800"
-                                  : "border-green-800 text-green-800 bg-white dark:bg-gray-800"
+                                  : "border-green-800 text-green-800 dark:text-green-400 bg-white dark:bg-gray-800"
                               }`}
                             >
                               Day {d}
@@ -363,14 +360,14 @@ export default function Batches() {
 
                       {/* Sarapan card */}
                       <div className="col-span-12 md:col-span-5">
-                        <div className="rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden">
+                        <div className="rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden bg-white dark:bg-gray-800">
                           <div className="bg-green-800 text-white text-xs font-semibold px-4 py-2 flex items-center justify-between">
                             <span>Sarapan</span>
                             <span>{b.sarapan.pax}</span>
                           </div>
 
                           <div className="p-4 flex gap-4">
-                            <div className="w-28 h-28 rounded-xl overflow-hidden bg-gray-100 shrink-0">
+                            <div className="w-28 h-28 rounded-xl overflow-hidden bg-gray-100 dark:bg-gray-700 shrink-0">
                               <img
                                 src={b.sarapan.img}
                                 alt="sarapan"
@@ -388,7 +385,7 @@ export default function Batches() {
                               </p>
 
                               <button
-                                className="mt-3 text-xs border border-green-800 text-green-800 px-3 py-2 rounded-lg"
+                                className="mt-3 text-xs border border-green-800 text-green-800 dark:text-green-400 px-3 py-2 rounded-lg"
                                 onClick={() =>
                                   alert(`Simulasi lihat resep sarapan batch ${b.id}`)
                                 }
@@ -413,14 +410,14 @@ export default function Batches() {
 
                       {/* Makan siang card */}
                       <div className="col-span-12 md:col-span-5">
-                        <div className="rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden">
+                        <div className="rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden bg-white dark:bg-gray-800">
                           <div className="bg-green-800 text-white text-xs font-semibold px-4 py-2 flex items-center justify-between">
                             <span>Makan Siang</span>
                             <span>{b.siang.pax}</span>
                           </div>
 
                           <div className="p-4 flex gap-4">
-                            <div className="w-28 h-28 rounded-xl overflow-hidden bg-gray-100 shrink-0">
+                            <div className="w-28 h-28 rounded-xl overflow-hidden bg-gray-100 dark:bg-gray-700 shrink-0">
                               <img
                                 src={b.siang.img}
                                 alt="siang"
@@ -438,7 +435,7 @@ export default function Batches() {
                               </p>
 
                               <button
-                                className="mt-3 text-xs border border-green-800 text-green-800 px-3 py-2 rounded-lg"
+                                className="mt-3 text-xs border border-green-800 text-green-800 dark:text-green-400 px-3 py-2 rounded-lg"
                                 onClick={() =>
                                   alert(`Simulasi lihat resep siang batch ${b.id}`)
                                 }
@@ -462,8 +459,7 @@ export default function Batches() {
                       </div>
                     </div>
 
-                    {/* divider */}
-                    <div className="border-b dark:border-gray-700 pt-2" />
+                    <div className="border-b border-gray-200 dark:border-gray-700 pt-2" />
                   </div>
                 ))}
               </>
