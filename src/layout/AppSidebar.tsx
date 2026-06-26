@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Link, useLocation } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 
 import {
   BoxCubeIcon,
@@ -70,6 +70,7 @@ const othersItems: NavItem[] = [
 const AppSidebar: React.FC = () => {
   const { isExpanded, isMobileOpen, isHovered, setIsHovered } = useSidebar();
   const location = useLocation();
+  const navigate = useNavigate();
 
   const [openSubmenu, setOpenSubmenu] = useState<{
     type: "main" | "others";
@@ -136,6 +137,14 @@ const AppSidebar: React.FC = () => {
       }
       return { type: menuType, index };
     });
+  };
+
+  // Fungsi Logout
+  const handleLogout = () => {
+    // Hapus status autentikasi (jika disimpan di localStorage)
+    localStorage.removeItem("isAuthenticated");
+    // Redirect ke halaman login
+    navigate("/login");
   };
 
   const renderMenuItems = (items: NavItem[], menuType: "main" | "others") => (
@@ -296,7 +305,7 @@ const AppSidebar: React.FC = () => {
         </Link>
       </div>
 
-      <div className="no-scrollbar flex flex-col overflow-y-auto duration-300 ease-linear">
+      <div className="no-scrollbar flex flex-col overflow-y-auto duration-300 ease-linear pb-4">
         <nav className="mb-6">
           <div className="flex flex-col gap-4">
             <div>
@@ -336,6 +345,43 @@ const AppSidebar: React.FC = () => {
             </div>
           </div>
         </nav>
+
+        {/* ========== DIVIDER & LOGOUT BUTTON ========== */}
+        <div className="mt-auto">
+          <div className="border-t border-gray-200 dark:border-gray-700/60 mx-2 mb-4"></div>
+          
+          <button
+            onClick={handleLogout}
+            className={`menu-item group menu-item-inactive cursor-pointer w-full ${
+              !isExpanded && !isHovered ? "lg:justify-center" : "lg:justify-start"
+            }`}
+          >
+            <span className="menu-item-icon-size menu-item-icon-inactive">
+              {/* Icon Logout menggunakan SVG sederhana */}
+              <svg 
+                xmlns="http://www.w3.org/2000/svg" 
+                width="20" 
+                height="20" 
+                viewBox="0 0 24 24" 
+                fill="none" 
+                stroke="currentColor" 
+                strokeWidth="2" 
+                strokeLinecap="round" 
+                strokeLinejoin="round"
+              >
+                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+                <polyline points="16 17 21 12 16 7" />
+                <line x1="21" x2="9" y1="12" y2="12" />
+              </svg>
+            </span>
+
+            {(isExpanded || isHovered || isMobileOpen) && (
+              <span className="menu-item-text text-red-500 dark:text-red-400 group-hover:text-red-600 dark:group-hover:text-red-300 transition-colors">
+                LogOut
+              </span>
+            )}
+          </button>
+        </div>
       </div>
     </aside>
   );

@@ -122,37 +122,48 @@ export default function Pengiriman() {
 
   const menuTitle = menuType === "siang" ? "Nasi Gudek Ayam" : "Bubur Ayam";
 
+  // Helper class untuk toggle button hijau
+  const toggleBtn = (active: boolean) =>
+    `w-6 h-6 rounded-md border flex items-center justify-center transition-all duration-200 ${
+      active
+        ? "bg-[#0d5c3b] dark:bg-emerald-600 border-[#0d5c3b] dark:border-emerald-600 text-white shadow-sm"
+        : "border-[#0d5c3b] dark:border-emerald-500 text-[#0d5c3b] dark:text-emerald-400 hover:bg-[#0d5c3b]/5 dark:hover:bg-emerald-500/10"
+    }`;
+
   return (
-    <div className="min-h-screen bg-gray-100 dark:bg-gray-950 p-4 md:p-6 space-y-6">
-      {/* HEADER PAGE */}
-      <div className="bg-gray-50 dark:bg-gray-900 px-6 py-4 rounded-xl shadow-md border border-gray-200 dark:border-gray-800 flex justify-between items-center">
-        <h1 className="text-lg font-bold text-green-800 dark:text-white">
+    <div className="min-h-screen bg-gray-50 dark:bg-[#0f172a] p-4 md:p-6 lg:p-8 space-y-6 transition-colors duration-300">
+      
+      {/* ========== HEADER PAGE ========== */}
+      <div className="bg-white dark:bg-[#1e293b] px-6 py-4 rounded-2xl shadow-sm border border-gray-200/60 dark:border-gray-700/60 flex justify-between items-center transition-colors duration-300">
+        <h1 className="text-xl md:text-2xl font-bold text-[#0d5c3b] dark:text-emerald-400">
           Pengemasan & Pengiriman
         </h1>
 
         <div className="flex items-start gap-4">
-          <div className="text-sm text-gray-500 dark:text-gray-400 text-right capitalize">
-            <p>{hari}</p>
-            <p>{tanggalLengkap}</p>
+          <div className="text-sm text-gray-500 dark:text-gray-400 text-right">
+            <p className="capitalize font-medium text-gray-700 dark:text-gray-300">{hari}</p>
+            <p className="text-xs">{tanggalLengkap}</p>
           </div>
         </div>
       </div>
 
-      {/* 3 KOLOM */}
+      {/* ========== 3 KOLOM UTAMA ========== */}
       <div className="grid grid-cols-12 gap-6">
-        {/* LEFT */}
-        <div className="col-span-12 xl:col-span-6 bg-gray-50 dark:bg-gray-900 rounded-xl shadow-md overflow-hidden border border-gray-200 dark:border-gray-800">
+        
+        {/* ====== LEFT ====== */}
+        <div className="col-span-12 xl:col-span-6 bg-white dark:bg-[#1e293b] rounded-2xl shadow-sm border border-gray-200/60 dark:border-gray-700/60 overflow-hidden transition-colors duration-300">
+          
           {/* Calendar */}
           <div className="p-5">
-            <div className="rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden bg-white dark:bg-gray-800">
-              <div className="bg-green-800 text-white text-xs font-semibold py-2 text-center">
+            <div className="rounded-xl border border-gray-200 dark:border-gray-700/80 overflow-hidden bg-white dark:bg-[#1e293b] transition-colors duration-300">
+              <div className="bg-[#0d5c3b] dark:bg-emerald-600 text-white text-xs font-semibold py-2 text-center">
                 February, 2022
               </div>
 
               <div className="p-3 flex items-center gap-3">
                 <button
                   type="button"
-                  className="w-8 h-8 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 flex items-center justify-center text-gray-600 dark:text-gray-200"
+                  className="w-8 h-8 rounded-lg border border-gray-200 dark:border-gray-700/80 bg-white dark:bg-[#1e293b] flex items-center justify-center text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors"
                   onClick={() => alert("Simulasi prev minggu")}
                 >
                   ‹
@@ -163,10 +174,10 @@ export default function Pengiriman() {
                     <div
                       key={`${d.day}-${d.label}`}
                       onClick={() => setSelectedDay(d.day)}
-                      className={`cursor-pointer rounded-lg border text-center py-2 transition ${
+                      className={`cursor-pointer rounded-lg border text-center py-2 transition-all duration-200 ${
                         selectedDay === d.day
-                          ? "bg-orange-500 border-orange-500 text-white"
-                          : "border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
+                          ? "bg-orange-500 border-orange-500 text-white shadow-md shadow-orange-500/20"
+                          : "border-gray-200 dark:border-gray-700/80 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700/50"
                       }`}
                     >
                       <div className="text-sm font-bold leading-none">
@@ -179,7 +190,7 @@ export default function Pengiriman() {
 
                 <button
                   type="button"
-                  className="w-8 h-8 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 flex items-center justify-center text-gray-600 dark:text-gray-200"
+                  className="w-8 h-8 rounded-lg border border-gray-200 dark:border-gray-700/80 bg-white dark:bg-[#1e293b] flex items-center justify-center text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors"
                   onClick={() => alert("Simulasi next minggu")}
                 >
                   ›
@@ -194,20 +205,20 @@ export default function Pengiriman() {
               <div className="flex items-center gap-2">
                 <button
                   onClick={() => setMenuType("sarapan")}
-                  className={`text-xs px-3 py-2 rounded-lg ${
+                  className={`text-xs px-3 py-1.5 rounded-lg font-medium transition-all duration-200 ${
                     menuType === "sarapan"
-                      ? "bg-green-800 text-white"
-                      : "border border-green-800 text-green-800 dark:text-green-400 bg-white dark:bg-gray-800"
+                      ? "bg-[#0d5c3b] dark:bg-emerald-600 text-white shadow-sm shadow-[#0d5c3b]/20 dark:shadow-emerald-600/20"
+                      : "border border-[#0d5c3b] dark:border-emerald-500 text-[#0d5c3b] dark:text-emerald-400 bg-white dark:bg-[#1e293b] hover:bg-[#0d5c3b]/5 dark:hover:bg-emerald-500/10"
                   }`}
                 >
                   Sarapan
                 </button>
                 <button
                   onClick={() => setMenuType("siang")}
-                  className={`text-xs px-3 py-2 rounded-lg ${
+                  className={`text-xs px-3 py-1.5 rounded-lg font-medium transition-all duration-200 ${
                     menuType === "siang"
-                      ? "bg-green-800 text-white"
-                      : "border border-green-800 text-green-800 dark:text-green-400 bg-white dark:bg-gray-800"
+                      ? "bg-[#0d5c3b] dark:bg-emerald-600 text-white shadow-sm shadow-[#0d5c3b]/20 dark:shadow-emerald-600/20"
+                      : "border border-[#0d5c3b] dark:border-emerald-500 text-[#0d5c3b] dark:text-emerald-400 bg-white dark:bg-[#1e293b] hover:bg-[#0d5c3b]/5 dark:hover:bg-emerald-500/10"
                   }`}
                 >
                   Makan Siang
@@ -217,7 +228,7 @@ export default function Pengiriman() {
               <div className="flex items-center gap-3">
                 <div className="flex items-center gap-2">
                   <select
-                    className="text-xs border border-gray-200 dark:border-gray-700 rounded-lg px-3 py-2 bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-200"
+                    className="text-xs border border-gray-200 dark:border-gray-700/80 rounded-lg px-3 py-1.5 bg-white dark:bg-[#1e293b] text-gray-600 dark:text-gray-300 outline-none focus:ring-1 focus:ring-[#0d5c3b] dark:focus:ring-emerald-500 transition-colors cursor-pointer"
                     defaultValue="No Driver"
                     onChange={(e) => alert(`Simulasi pilih: ${e.target.value}`)}
                   >
@@ -226,13 +237,13 @@ export default function Pengiriman() {
                     <option>Driver 02</option>
                   </select>
 
-                  <span className="w-5 h-5 rounded-full bg-green-800 text-white text-[10px] flex items-center justify-center">
+                  <span className="w-5 h-5 rounded-full bg-[#0d5c3b] dark:bg-emerald-600 text-white text-[10px] flex items-center justify-center shadow-sm shadow-[#0d5c3b]/20 dark:shadow-emerald-600/20">
                     1
                   </span>
                 </div>
 
                 <select
-                  className="text-xs border border-gray-200 dark:border-gray-700 rounded-lg px-3 py-2 bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-200"
+                  className="text-xs border border-gray-200 dark:border-gray-700/80 rounded-lg px-3 py-1.5 bg-white dark:bg-[#1e293b] text-gray-600 dark:text-gray-300 outline-none focus:ring-1 focus:ring-[#0d5c3b] dark:focus:ring-emerald-500 transition-colors cursor-pointer"
                   value={filterKelurahan}
                   onChange={(e) => setFilterKelurahan(e.target.value)}
                 >
@@ -243,14 +254,14 @@ export default function Pengiriman() {
               </div>
             </div>
 
-            <h2 className="mt-4 text-2xl font-bold text-green-800 dark:text-white">
+            <h2 className="mt-4 text-2xl font-bold text-[#0d5c3b] dark:text-emerald-400">
               {menuTitle}
             </h2>
           </div>
 
           {/* Table */}
-          <div className="border-t border-gray-200 dark:border-gray-700">
-            <div className="px-5 py-3 grid grid-cols-12 text-xs font-semibold text-orange-500">
+          <div className="border-t border-gray-200 dark:border-gray-700/60">
+            <div className="px-5 py-3 grid grid-cols-12 text-xs font-semibold text-orange-500 dark:text-orange-400 border-b border-gray-200 dark:border-gray-700/60">
               <div className="col-span-2">Nomor Pesanan</div>
               <div className="col-span-2">Logistik</div>
               <div className="col-span-3">Penerima</div>
@@ -258,29 +269,29 @@ export default function Pengiriman() {
               <div className="col-span-1 text-right">Qty</div>
             </div>
 
-            <div className="divide-y divide-gray-200 dark:divide-gray-700">
+            <div className="divide-y divide-gray-200 dark:divide-gray-700/50">
               {orders.map((o, idx) => (
                 <div
                   key={`${o.no}-${idx}`}
-                  className="px-5 py-4 grid grid-cols-12 text-sm items-start hover:bg-gray-100 dark:hover:bg-gray-800 cursor-pointer transition"
+                  className="px-5 py-4 grid grid-cols-12 text-sm items-start hover:bg-[#0d5c3b]/5 dark:hover:bg-emerald-500/5 cursor-pointer transition-colors duration-200"
                   onClick={() => {
                     setSelectedOrderId("WLD-220001");
                     alert(`Simulasi pilih order: ${o.no}`);
                   }}
                 >
-                  <div className="col-span-2 text-gray-600 dark:text-gray-200">
+                  <div className="col-span-2 text-gray-600 dark:text-gray-400">
                     {o.no}
                   </div>
-                  <div className="col-span-2 text-gray-600 dark:text-gray-200">
+                  <div className="col-span-2 text-gray-600 dark:text-gray-400">
                     {o.logistik}
                   </div>
-                  <div className="col-span-3 text-gray-700 dark:text-gray-200">
+                  <div className="col-span-3 text-gray-700 dark:text-gray-300">
                     {o.penerima}
                   </div>
-                  <div className="col-span-4 text-gray-500 dark:text-gray-300">
+                  <div className="col-span-4 text-gray-500 dark:text-gray-500 truncate">
                     {o.alamat}
                   </div>
-                  <div className="col-span-1 text-right text-green-800 dark:text-green-300 font-semibold">
+                  <div className="col-span-1 text-right text-[#0d5c3b] dark:text-emerald-400 font-semibold">
                     {o.qty}
                   </div>
                 </div>
@@ -289,19 +300,19 @@ export default function Pengiriman() {
           </div>
         </div>
 
-        {/* MIDDLE */}
-        <div className="col-span-12 xl:col-span-3 bg-gray-50 dark:bg-gray-900 rounded-xl shadow-md overflow-hidden border border-gray-200 dark:border-gray-800">
-          <div className="p-5 border-b border-gray-200 dark:border-gray-700">
-            <h3 className="font-bold text-green-800 dark:text-white">
+        {/* ====== MIDDLE ====== */}
+        <div className="col-span-12 xl:col-span-3 bg-white dark:bg-[#1e293b] rounded-2xl shadow-sm border border-gray-200/60 dark:border-gray-700/60 overflow-hidden transition-colors duration-300">
+          <div className="p-5 border-b border-gray-200 dark:border-gray-700/60">
+            <h3 className="font-bold text-[#0d5c3b] dark:text-emerald-400">
               Check Kualitas & Kuantitas
             </h3>
           </div>
 
-          <div className="px-5 py-4 border-b border-gray-200 dark:border-gray-700">
+          <div className="px-5 py-4 border-b border-gray-200 dark:border-gray-700/60">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-xs text-gray-500">Kualitas Makanan</p>
-                <p className="text-sm text-gray-700 dark:text-gray-200">
+                <p className="text-xs text-gray-400 dark:text-gray-500">Kualitas Makanan</p>
+                <p className="text-sm text-gray-700 dark:text-gray-300">
                   Nasi Gudeg Ayam
                 </p>
               </div>
@@ -309,11 +320,7 @@ export default function Pengiriman() {
               <button
                 type="button"
                 onClick={() => setQcMakanan((v) => !v)}
-                className={`w-6 h-6 rounded-md border flex items-center justify-center ${
-                  qcMakanan
-                    ? "bg-green-800 border-green-800 text-white"
-                    : "border-green-800 text-green-800 dark:text-green-400"
-                }`}
+                className={toggleBtn(qcMakanan)}
               >
                 {qcMakanan && "✓"}
               </button>
@@ -321,8 +328,8 @@ export default function Pengiriman() {
 
             <div className="mt-4 flex items-center justify-between">
               <div>
-                <p className="text-xs text-gray-500">Kuantitas Pesanan</p>
-                <p className="text-sm text-gray-700 dark:text-gray-200">
+                <p className="text-xs text-gray-400 dark:text-gray-500">Kuantitas Pesanan</p>
+                <p className="text-sm text-gray-700 dark:text-gray-300">
                   Paket Makan Siang
                 </p>
               </div>
@@ -330,47 +337,43 @@ export default function Pengiriman() {
               <button
                 type="button"
                 onClick={() => setQcKuantitas((v) => !v)}
-                className={`w-6 h-6 rounded-md border flex items-center justify-center ${
-                  qcKuantitas
-                    ? "bg-green-800 border-green-800 text-white"
-                    : "border-green-800 text-green-800 dark:text-green-400"
-                }`}
+                className={toggleBtn(qcKuantitas)}
               >
                 {qcKuantitas && "✓"}
               </button>
             </div>
           </div>
 
-          <div className="p-5 border-b border-gray-200 dark:border-gray-700">
-            <h3 className="font-bold text-green-800 dark:text-white">
+          <div className="p-5 border-b border-gray-200 dark:border-gray-700/60">
+            <h3 className="font-bold text-[#0d5c3b] dark:text-emerald-400">
               Check Pengiriman
             </h3>
           </div>
 
-          <div className="px-5 py-4 border-b border-gray-200 dark:border-gray-700">
-            <p className="text-sm font-semibold text-gray-700 dark:text-gray-200">
+          <div className="px-5 py-4 border-b border-gray-200 dark:border-gray-700/60">
+            <p className="text-sm font-semibold text-gray-700 dark:text-gray-300">
               WLD-220001-01
             </p>
-            <p className="text-sm text-gray-600 dark:text-gray-300">
+            <p className="text-sm text-gray-600 dark:text-gray-400">
               SMPN 05 Bakti Sari
             </p>
-            <p className="text-sm text-gray-500 dark:text-gray-300">
+            <p className="text-sm text-gray-500 dark:text-gray-500">
               Mampang - Jakarta Selatan
             </p>
 
             <button
               type="button"
-              className="mt-4 text-xs border border-green-800 text-green-800 dark:text-green-400 px-4 py-2 rounded-lg"
+              className="mt-4 text-xs border border-[#0d5c3b] dark:border-emerald-500 text-[#0d5c3b] dark:text-emerald-400 px-4 py-2 rounded-lg hover:bg-[#0d5c3b] hover:text-white dark:hover:bg-emerald-500 dark:hover:text-white transition-colors duration-200"
               onClick={() => alert("Simulasi ubah alamat")}
             >
               Ubah Alamat
             </button>
           </div>
 
-          <div className="px-5 py-4 border-b border-gray-200 dark:border-gray-700">
-            <p className="text-xs text-gray-500">Pengantar</p>
+          <div className="px-5 py-4 border-b border-gray-200 dark:border-gray-700/60">
+            <p className="text-xs text-gray-400 dark:text-gray-500">Pengantar</p>
             <select
-              className="mt-2 w-full text-sm border border-gray-200 dark:border-gray-700 rounded-lg px-3 py-2 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200"
+              className="mt-2 w-full text-sm border border-gray-200 dark:border-gray-700/80 rounded-lg px-3 py-2 bg-white dark:bg-[#1e293b] text-gray-700 dark:text-gray-300 outline-none focus:ring-1 focus:ring-[#0d5c3b] dark:focus:ring-emerald-500 transition-colors cursor-pointer"
               value={driver}
               onChange={(e) => setDriver(e.target.value)}
             >
@@ -383,8 +386,8 @@ export default function Pengiriman() {
           <div className="px-5 py-4">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-xs text-gray-500">Konfirmasi Pengantar</p>
-                <p className="text-sm text-gray-700 dark:text-gray-200">
+                <p className="text-xs text-gray-400 dark:text-gray-500">Konfirmasi Pengantar</p>
+                <p className="text-sm text-gray-700 dark:text-gray-300">
                   {driver}
                 </p>
                 <p className="text-sm text-gray-500">0813 828 88222</p>
@@ -393,11 +396,7 @@ export default function Pengiriman() {
               <button
                 type="button"
                 onClick={() => setKonfirmasiPengantar((v) => !v)}
-                className={`w-6 h-6 rounded-md border flex items-center justify-center ${
-                  konfirmasiPengantar
-                    ? "bg-green-800 border-green-800 text-white"
-                    : "border-green-800 text-green-800 dark:text-green-400"
-                }`}
+                className={toggleBtn(konfirmasiPengantar)}
               >
                 {konfirmasiPengantar && "✓"}
               </button>
@@ -406,7 +405,7 @@ export default function Pengiriman() {
             <div className="mt-6 flex items-center gap-3">
               <button
                 type="button"
-                className="w-12 h-12 rounded-lg bg-gray-800 dark:bg-gray-700 text-white flex items-center justify-center"
+                className="w-12 h-12 rounded-lg bg-[#0d5c3b] dark:bg-emerald-600 text-white flex items-center justify-center hover:bg-[#09472e] dark:hover:bg-emerald-500 transition-colors shadow-sm shadow-[#0d5c3b]/20 dark:shadow-emerald-600/20"
                 onClick={() => alert("Simulasi print")}
                 title="Print"
               >
@@ -415,7 +414,7 @@ export default function Pengiriman() {
 
               <button
                 type="button"
-                className="flex-1 h-12 rounded-lg bg-green-800 text-white font-semibold hover:bg-green-700"
+                className="flex-1 h-12 rounded-lg bg-[#0d5c3b] dark:bg-emerald-600 text-white font-semibold hover:bg-[#09472e] dark:hover:bg-emerald-500 transition-colors shadow-sm shadow-[#0d5c3b]/20 dark:shadow-emerald-600/20"
                 onClick={() =>
                   alert(
                     `Simulasi save\nQC Makanan: ${qcMakanan}\nQC Kuantitas: ${qcKuantitas}\nKonfirmasi: ${konfirmasiPengantar}\nDriver: ${driver}`
@@ -428,17 +427,17 @@ export default function Pengiriman() {
           </div>
         </div>
 
-        {/* RIGHT */}
-        <div className="col-span-12 xl:col-span-3 bg-gray-50 dark:bg-gray-900 rounded-xl shadow-md overflow-hidden border border-gray-200 dark:border-gray-800">
-          <div className="p-5 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between">
-            <h3 className="font-bold text-green-800 dark:text-white">
+        {/* ====== RIGHT ====== */}
+        <div className="col-span-12 xl:col-span-3 bg-white dark:bg-[#1e293b] rounded-2xl shadow-sm border border-gray-200/60 dark:border-gray-700/60 overflow-hidden transition-colors duration-300">
+          <div className="p-5 border-b border-gray-200 dark:border-gray-700/60 flex items-center justify-between">
+            <h3 className="font-bold text-[#0d5c3b] dark:text-emerald-400">
               Order Release
             </h3>
 
             <div className="flex items-center gap-2">
               <button
                 type="button"
-                className="w-9 h-9 rounded-lg bg-gray-800 dark:bg-gray-700 text-white flex items-center justify-center"
+                className="w-9 h-9 rounded-lg bg-[#0d5c3b] dark:bg-emerald-600 text-white flex items-center justify-center hover:bg-[#09472e] dark:hover:bg-emerald-500 transition-colors shadow-sm shadow-[#0d5c3b]/20 dark:shadow-emerald-600/20"
                 onClick={() => alert("Simulasi print order release")}
                 title="Print"
               >
@@ -446,7 +445,7 @@ export default function Pengiriman() {
               </button>
 
               <select
-                className="text-xs border border-gray-200 dark:border-gray-700 rounded-lg px-3 py-2 bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-200"
+                className="text-xs border border-gray-200 dark:border-gray-700/80 rounded-lg px-3 py-1.5 bg-white dark:bg-[#1e293b] text-gray-600 dark:text-gray-300 outline-none focus:ring-1 focus:ring-[#0d5c3b] dark:focus:ring-emerald-500 transition-colors cursor-pointer"
                 defaultValue="Seluruh Instansi"
                 onChange={(e) => alert(`Filter: ${e.target.value}`)}
               >
@@ -459,32 +458,32 @@ export default function Pengiriman() {
           </div>
 
           <div className="p-5">
-            <div className="rounded-xl border border-green-800 overflow-hidden bg-white dark:bg-gray-800">
-              <div className="bg-green-800 text-white text-xs px-4 py-2 flex items-center justify-between">
+            <div className="rounded-xl border border-[#0d5c3b] dark:border-emerald-600 overflow-hidden bg-white dark:bg-[#1e293b] transition-colors duration-300">
+              <div className="bg-[#0d5c3b] dark:bg-emerald-600 text-white text-xs px-4 py-2 flex items-center justify-between">
                 <span>Delivered</span>
                 <button
                   type="button"
-                  className="text-[11px] border border-white/40 px-3 py-1 rounded-lg"
+                  className="text-[11px] border border-white/40 px-3 py-1 rounded-lg hover:bg-white/10 transition-colors"
                   onClick={() => alert("Simulasi delivery details")}
                 >
                   Delivery Details
                 </button>
               </div>
 
-              <div className="p-4 border-b border-gray-200 dark:border-gray-700">
+              <div className="p-4 border-b border-gray-200 dark:border-gray-700/60">
                 <div className="flex items-start justify-between gap-4">
                   <div>
-                    <p className="text-sm font-semibold text-gray-800 dark:text-white">
+                    <p className="text-sm font-semibold text-gray-800 dark:text-gray-100">
                       {rightOrder.title}
                     </p>
                     <p className="text-sm text-gray-500">{rightOrder.phone}</p>
                   </div>
-                  <p className="text-sm text-gray-700 dark:text-gray-200 font-semibold">
+                  <p className="text-sm text-gray-700 dark:text-gray-300 font-semibold">
                     {rightOrder.code}
                   </p>
                 </div>
 
-                <div className="mt-4 flex items-center justify-between text-sm text-gray-600 dark:text-gray-300">
+                <div className="mt-4 flex items-center justify-between text-sm text-gray-600 dark:text-gray-400">
                   <span>{rightOrder.menu}</span>
                   <span className="text-orange-500 font-semibold">
                     {rightOrder.pax} Pax
@@ -492,24 +491,24 @@ export default function Pengiriman() {
                 </div>
               </div>
 
-              <div className="p-4 border-b border-gray-200 dark:border-gray-700">
+              <div className="p-4 border-b border-gray-200 dark:border-gray-700/60">
                 <div className="flex items-center justify-between">
-                  <p className="text-sm font-semibold text-green-800 dark:text-white">
+                  <p className="text-sm font-semibold text-[#0d5c3b] dark:text-emerald-400">
                     Delivery Info
                   </p>
                   <button
                     type="button"
                     onClick={() => alert("Simulasi collapse")}
-                    className="text-green-800 dark:text-green-400"
+                    className="text-[#0d5c3b] dark:text-emerald-400"
                     title="Collapse"
                   >
                     ^
                   </button>
                 </div>
 
-                <div className="mt-3 text-sm text-gray-600 dark:text-gray-300 space-y-2">
+                <div className="mt-3 text-sm text-gray-600 dark:text-gray-400 space-y-2">
                   <p>
-                    <span className="text-gray-400">Logistik:</span>{" "}
+                    <span className="text-gray-400 dark:text-gray-500">Logistik:</span>{" "}
                     {rightOrder.deliveryInfo.logistik}
                   </p>
                   <p className="text-gray-500">{rightOrder.deliveryInfo.alamat}</p>
@@ -518,11 +517,11 @@ export default function Pengiriman() {
 
               <div className="p-4">
                 <p className="text-xs text-gray-400 mb-1">Notes:</p>
-                <p className="text-sm text-gray-600 dark:text-gray-300">
+                <p className="text-sm text-gray-600 dark:text-gray-400">
                   {rightOrder.notes}
                 </p>
 
-                <div className="mt-4 rounded-xl overflow-hidden bg-gray-100 dark:bg-gray-700">
+                <div className="mt-4 rounded-xl overflow-hidden bg-gray-100 dark:bg-gray-700/50 border border-gray-200 dark:border-gray-700/80">
                   <img
                     src={rightOrder.image}
                     alt="Foto Pengemasan"
@@ -536,19 +535,19 @@ export default function Pengiriman() {
               </div>
             </div>
 
-            <div className="mt-4 rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden bg-white dark:bg-gray-800">
+            <div className="mt-4 rounded-xl border border-gray-200 dark:border-gray-700/80 overflow-hidden bg-white dark:bg-[#1e293b] transition-colors duration-300">
               <div
-                className="p-4 cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-700 transition"
+                className="p-4 cursor-pointer hover:bg-[#0d5c3b]/5 dark:hover:bg-emerald-500/10 transition-colors duration-200"
                 onClick={() => alert("Simulasi buka recipient detail")}
               >
                 <div className="flex items-start justify-between gap-4">
                   <div>
-                    <p className="text-sm font-semibold text-gray-800 dark:text-white">
+                    <p className="text-sm font-semibold text-gray-800 dark:text-gray-100">
                       {bottomRecipient.title}
                     </p>
                     <p className="text-sm text-gray-500">{bottomRecipient.phone}</p>
                   </div>
-                  <p className="text-sm text-gray-700 dark:text-gray-200 font-semibold">
+                  <p className="text-sm text-gray-700 dark:text-gray-300 font-semibold">
                     {bottomRecipient.code}
                   </p>
                 </div>

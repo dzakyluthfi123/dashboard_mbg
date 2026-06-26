@@ -189,33 +189,35 @@ export default function Dapur() {
   );
 
   return (
-    <div className="min-h-screen bg-gray-100 dark:bg-gray-950 p-4 md:p-6 space-y-6">
-      {/* HEADER PAGE */}
-      <div className="bg-gray-50 dark:bg-gray-900 px-6 py-4 rounded-xl shadow-md border border-gray-200 dark:border-gray-800 flex justify-between items-center">
-        <h1 className="text-lg font-bold text-green-800 dark:text-white">
+    <div className="min-h-screen bg-gray-50 dark:bg-[#0f172a] p-4 md:p-6 lg:p-8 space-y-6 transition-colors duration-300">
+      
+      {/* ========== HEADER PAGE ========== */}
+      <div className="bg-white dark:bg-[#1e293b] px-6 py-4 rounded-2xl shadow-sm border border-gray-200/60 dark:border-gray-700/60 flex justify-between items-center transition-colors duration-300">
+        <h1 className="text-xl md:text-2xl font-bold text-[#0d5c3b] dark:text-emerald-400">
           Dapur
         </h1>
 
-        <div className="text-sm text-gray-500 dark:text-gray-400 text-right capitalize">
-          <p>{hari}</p>
-          <p>{tanggalLengkap}</p>
+        <div className="text-right text-sm text-gray-500 dark:text-gray-400">
+          <p className="capitalize font-medium text-gray-700 dark:text-gray-300">{hari}</p>
+          <p className="text-xs">{tanggalLengkap}</p>
         </div>
       </div>
 
-      {/* TOP ROW: CALENDAR + MENU CARDS */}
-      <div className="bg-gray-50 dark:bg-gray-900 rounded-xl shadow-md border border-gray-200 dark:border-gray-800 overflow-hidden">
+      {/* ========== TOP ROW: CALENDAR + MENU CARDS ========== */}
+      <div className="bg-white dark:bg-[#1e293b] rounded-2xl shadow-sm border border-gray-200/60 dark:border-gray-700/60 overflow-hidden transition-colors duration-300">
         <div className="p-5 grid grid-cols-12 gap-5 items-stretch">
+          
           {/* Calendar */}
           <div className="col-span-12 xl:col-span-5">
-            <div className="rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden bg-white dark:bg-gray-800">
-              <div className="bg-green-800 text-white text-xs font-semibold py-2 text-center">
+            <div className="rounded-xl border border-gray-200 dark:border-gray-700/80 overflow-hidden bg-white dark:bg-[#1e293b] transition-colors duration-300">
+              <div className="bg-[#0d5c3b] dark:bg-emerald-600 text-white text-xs font-semibold py-2 text-center">
                 February, 2022
               </div>
 
               <div className="p-3 flex items-center gap-3">
                 <button
                   type="button"
-                  className="w-8 h-8 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 flex items-center justify-center text-gray-600 dark:text-gray-200"
+                  className="w-8 h-8 rounded-lg border border-gray-200 dark:border-gray-700/80 bg-white dark:bg-[#1e293b] flex items-center justify-center text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors"
                   onClick={() => alert("Simulasi prev minggu")}
                 >
                   ‹
@@ -226,10 +228,10 @@ export default function Dapur() {
                     <div
                       key={`${d.day}-${d.label}`}
                       onClick={() => setSelectedDay(d.day)}
-                      className={`cursor-pointer rounded-lg border text-center py-2 transition ${
+                      className={`cursor-pointer rounded-lg border text-center py-2 transition-all duration-200 ${
                         selectedDay === d.day
-                          ? "bg-orange-500 border-orange-500 text-white"
-                          : "border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
+                          ? "bg-orange-500 border-orange-500 text-white shadow-md shadow-orange-500/20"
+                          : "border-gray-200 dark:border-gray-700/80 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700/50"
                       }`}
                     >
                       <div className="text-sm font-bold leading-none">{d.day}</div>
@@ -240,7 +242,7 @@ export default function Dapur() {
 
                 <button
                   type="button"
-                  className="w-8 h-8 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 flex items-center justify-center text-gray-600 dark:text-gray-200"
+                  className="w-8 h-8 rounded-lg border border-gray-200 dark:border-gray-700/80 bg-white dark:bg-[#1e293b] flex items-center justify-center text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors"
                   onClick={() => alert("Simulasi next minggu")}
                 >
                   ›
@@ -251,7 +253,7 @@ export default function Dapur() {
                 <p className="text-sm font-semibold text-gray-700 dark:text-gray-200">
                   Batch 2, Hari ke 5
                 </p>
-                <p className="text-xs text-gray-400">
+                <p className="text-xs text-gray-400 dark:text-gray-500">
                   Friday, February {selectedDay}, 2022
                 </p>
               </div>
@@ -260,14 +262,14 @@ export default function Dapur() {
 
           {/* Sarapan card */}
           <div className="col-span-12 xl:col-span-3">
-            <div className="rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden h-full bg-white dark:bg-gray-800">
-              <div className="bg-green-800 text-white px-4 py-2 flex items-center justify-between text-xs font-semibold">
+            <div className="rounded-xl border border-gray-200 dark:border-gray-700/80 overflow-hidden h-full bg-white dark:bg-[#1e293b] transition-colors duration-300">
+              <div className="bg-[#0d5c3b] dark:bg-emerald-600 text-white px-4 py-2 flex items-center justify-between text-xs font-semibold">
                 <span>Sarapan</span>
                 <span>{sarapanCard.pax} pax</span>
               </div>
 
               <div className="p-4 flex gap-4">
-                <div className="w-20 h-20 rounded-xl overflow-hidden bg-gray-100 dark:bg-gray-700 shrink-0">
+                <div className="w-20 h-20 rounded-xl overflow-hidden bg-gray-100 dark:bg-gray-700/50 shrink-0 border border-gray-200 dark:border-gray-700/80">
                   <img
                     src={sarapanCard.img}
                     alt="Sarapan"
@@ -283,8 +285,8 @@ export default function Dapur() {
                   <div className="mt-2 grid grid-cols-2 gap-y-1 text-[11px]">
                     {sarapanCard.stats.map((s) => (
                       <div key={s.label} className="contents">
-                        <div className="text-gray-400">{s.label}</div>
-                        <div className="text-right text-gray-700 dark:text-gray-200">
+                        <div className="text-gray-400 dark:text-gray-500">{s.label}</div>
+                        <div className="text-right text-gray-700 dark:text-gray-300">
                           {s.value}
                         </div>
                       </div>
@@ -293,7 +295,7 @@ export default function Dapur() {
 
                   <button
                     type="button"
-                    className="mt-3 text-xs border border-green-800 text-green-800 dark:text-green-400 px-3 py-1 rounded-lg"
+                    className="mt-3 text-xs border border-[#0d5c3b] dark:border-emerald-500 text-[#0d5c3b] dark:text-emerald-400 px-3 py-1 rounded-lg hover:bg-[#0d5c3b] hover:text-white dark:hover:bg-emerald-500 dark:hover:text-white transition-colors"
                     onClick={() => alert("Simulasi lihat resep Sarapan")}
                   >
                     Lihat Resep Masakan
@@ -305,14 +307,14 @@ export default function Dapur() {
 
           {/* Makan siang card */}
           <div className="col-span-12 xl:col-span-4">
-            <div className="rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden h-full bg-white dark:bg-gray-800">
-              <div className="bg-green-800 text-white px-4 py-2 flex items-center justify-between text-xs font-semibold">
+            <div className="rounded-xl border border-gray-200 dark:border-gray-700/80 overflow-hidden h-full bg-white dark:bg-[#1e293b] transition-colors duration-300">
+              <div className="bg-[#0d5c3b] dark:bg-emerald-600 text-white px-4 py-2 flex items-center justify-between text-xs font-semibold">
                 <span>Makan Siang</span>
                 <span>{siangCard.pax} pax</span>
               </div>
 
               <div className="p-4 flex gap-4">
-                <div className="w-20 h-20 rounded-xl overflow-hidden bg-gray-100 dark:bg-gray-700 shrink-0">
+                <div className="w-20 h-20 rounded-xl overflow-hidden bg-gray-100 dark:bg-gray-700/50 shrink-0 border border-gray-200 dark:border-gray-700/80">
                   <img
                     src={siangCard.img}
                     alt="Makan Siang"
@@ -331,8 +333,8 @@ export default function Dapur() {
                   <div className="mt-2 grid grid-cols-2 gap-y-1 text-[11px]">
                     {siangCard.stats.map((s) => (
                       <div key={s.label} className="contents">
-                        <div className="text-gray-400">{s.label}</div>
-                        <div className="text-right text-gray-700 dark:text-gray-200">
+                        <div className="text-gray-400 dark:text-gray-500">{s.label}</div>
+                        <div className="text-right text-gray-700 dark:text-gray-300">
                           {s.value}
                         </div>
                       </div>
@@ -341,7 +343,7 @@ export default function Dapur() {
 
                   <button
                     type="button"
-                    className="mt-3 text-xs border border-green-800 text-green-800 dark:text-green-400 px-3 py-1 rounded-lg"
+                    className="mt-3 text-xs border border-[#0d5c3b] dark:border-emerald-500 text-[#0d5c3b] dark:text-emerald-400 px-3 py-1 rounded-lg hover:bg-[#0d5c3b] hover:text-white dark:hover:bg-emerald-500 dark:hover:text-white transition-colors"
                     onClick={() => alert("Simulasi lihat resep Makan Siang")}
                   >
                     Lihat Resep Masakan
@@ -353,32 +355,33 @@ export default function Dapur() {
         </div>
       </div>
 
-      {/* BOTTOM 3 PANELS */}
+      {/* ========== BOTTOM 3 PANELS ========== */}
       <div className="grid grid-cols-12 gap-6">
+        
         {/* Daftar Masakan */}
-        <div className="col-span-12 xl:col-span-4 bg-gray-50 dark:bg-gray-900 rounded-xl shadow-md border border-gray-200 dark:border-gray-800 overflow-hidden">
-          <div className="px-5 py-4 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between">
-            <h3 className="font-bold text-green-800 dark:text-white">
+        <div className="col-span-12 xl:col-span-4 bg-white dark:bg-[#1e293b] rounded-2xl shadow-sm border border-gray-200/60 dark:border-gray-700/60 overflow-hidden transition-colors duration-300">
+          <div className="px-5 py-4 border-b border-gray-200 dark:border-gray-700/60 flex items-center justify-between">
+            <h3 className="font-bold text-[#0d5c3b] dark:text-emerald-400">
               Daftar Masakan
             </h3>
 
             <div className="flex items-center gap-2">
               <button
                 onClick={() => setMenuType("sarapan")}
-                className={`text-xs px-3 py-1 rounded-lg ${
+                className={`text-xs px-3 py-1.5 rounded-lg font-medium transition-all duration-200 ${
                   menuType === "sarapan"
-                    ? "bg-green-800 text-white"
-                    : "border border-green-800 text-green-800 dark:text-green-400"
+                    ? "bg-[#0d5c3b] dark:bg-emerald-600 text-white shadow-sm shadow-[#0d5c3b]/20 dark:shadow-emerald-600/20"
+                    : "border border-[#0d5c3b] dark:border-emerald-500 text-[#0d5c3b] dark:text-emerald-400 hover:bg-[#0d5c3b]/5 dark:hover:bg-emerald-500/10"
                 }`}
               >
                 Sarapan
               </button>
               <button
                 onClick={() => setMenuType("siang")}
-                className={`text-xs px-3 py-1 rounded-lg ${
+                className={`text-xs px-3 py-1.5 rounded-lg font-medium transition-all duration-200 ${
                   menuType === "siang"
-                    ? "bg-green-800 text-white"
-                    : "border border-green-800 text-green-800 dark:text-green-400"
+                    ? "bg-[#0d5c3b] dark:bg-emerald-600 text-white shadow-sm shadow-[#0d5c3b]/20 dark:shadow-emerald-600/20"
+                    : "border border-[#0d5c3b] dark:border-emerald-500 text-[#0d5c3b] dark:text-emerald-400 hover:bg-[#0d5c3b]/5 dark:hover:bg-emerald-500/10"
                 }`}
               >
                 Makan Siang
@@ -390,9 +393,9 @@ export default function Dapur() {
             {daftarMasakan.map((g) => (
               <div key={`${g.group}-${g.title}`}>
                 <div className="flex items-center justify-between">
-                  <p className="text-xs text-gray-400">
+                  <p className="text-xs text-gray-400 dark:text-gray-500">
                     {g.group} <span className="mx-1">|</span>{" "}
-                    <span className="text-gray-700 dark:text-gray-200 font-semibold">
+                    <span className="text-gray-700 dark:text-gray-300 font-semibold">
                       {g.title}
                     </span>
                   </p>
@@ -408,13 +411,13 @@ export default function Dapur() {
                         className="grid grid-cols-12 gap-3 items-center"
                       >
                         <div className="col-span-5">
-                          <p className="text-xs text-gray-600 dark:text-gray-300">
+                          <p className="text-xs text-gray-600 dark:text-gray-400">
                             {it.name}
                           </p>
                         </div>
 
                         <div className="col-span-5">
-                          <div className="w-full bg-gray-200 dark:bg-gray-700 h-2 rounded-full overflow-hidden">
+                          <div className="w-full bg-gray-200 dark:bg-gray-700/60 h-2 rounded-full overflow-hidden">
                             <div
                               className="h-2 rounded-full bg-orange-500"
                               style={{ width: `${pct}%` }}
@@ -423,7 +426,7 @@ export default function Dapur() {
                         </div>
 
                         <div className="col-span-2 text-right">
-                          <p className="text-[11px] text-gray-400">
+                          <p className="text-[11px] text-gray-400 dark:text-gray-500">
                             {it.value} / {it.max}
                           </p>
                         </div>
@@ -437,27 +440,27 @@ export default function Dapur() {
         </div>
 
         {/* Ticketing */}
-        <div className="col-span-12 xl:col-span-4 bg-gray-50 dark:bg-gray-900 rounded-xl shadow-md border border-gray-200 dark:border-gray-800 overflow-hidden">
-          <div className="px-5 py-4 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between">
-            <h3 className="font-bold text-green-800 dark:text-white">Ticketing</h3>
+        <div className="col-span-12 xl:col-span-4 bg-white dark:bg-[#1e293b] rounded-2xl shadow-sm border border-gray-200/60 dark:border-gray-700/60 overflow-hidden transition-colors duration-300">
+          <div className="px-5 py-4 border-b border-gray-200 dark:border-gray-700/60 flex items-center justify-between">
+            <h3 className="font-bold text-[#0d5c3b] dark:text-emerald-400">Ticketing</h3>
 
             <div className="flex items-center gap-2">
               <button
                 onClick={() => setMenuType("sarapan")}
-                className={`text-xs px-3 py-1 rounded-lg ${
+                className={`text-xs px-3 py-1.5 rounded-lg font-medium transition-all duration-200 ${
                   menuType === "sarapan"
-                    ? "bg-green-800 text-white"
-                    : "border border-green-800 text-green-800 dark:text-green-400"
+                    ? "bg-[#0d5c3b] dark:bg-emerald-600 text-white shadow-sm shadow-[#0d5c3b]/20 dark:shadow-emerald-600/20"
+                    : "border border-[#0d5c3b] dark:border-emerald-500 text-[#0d5c3b] dark:text-emerald-400 hover:bg-[#0d5c3b]/5 dark:hover:bg-emerald-500/10"
                 }`}
               >
                 Sarapan
               </button>
               <button
                 onClick={() => setMenuType("siang")}
-                className={`text-xs px-3 py-1 rounded-lg ${
+                className={`text-xs px-3 py-1.5 rounded-lg font-medium transition-all duration-200 ${
                   menuType === "siang"
-                    ? "bg-green-800 text-white"
-                    : "border border-green-800 text-green-800 dark:text-green-400"
+                    ? "bg-[#0d5c3b] dark:bg-emerald-600 text-white shadow-sm shadow-[#0d5c3b]/20 dark:shadow-emerald-600/20"
+                    : "border border-[#0d5c3b] dark:border-emerald-500 text-[#0d5c3b] dark:text-emerald-400 hover:bg-[#0d5c3b]/5 dark:hover:bg-emerald-500/10"
                 }`}
               >
                 Makan Siang
@@ -465,7 +468,7 @@ export default function Dapur() {
 
               <button
                 type="button"
-                className="ml-1 w-9 h-9 rounded-lg bg-gray-800 dark:bg-gray-700 text-white flex items-center justify-center"
+                className="ml-1 w-9 h-9 rounded-lg bg-[#0d5c3b] dark:bg-emerald-600 text-white flex items-center justify-center hover:bg-[#09472e] dark:hover:bg-emerald-500 transition-colors shadow-sm shadow-[#0d5c3b]/20 dark:shadow-emerald-600/20"
                 title="Print"
                 onClick={() => alert("Simulasi print ticket")}
               >
@@ -478,17 +481,17 @@ export default function Dapur() {
             {ticketing.map((t) => (
               <div key={t.title}>
                 <div className="flex items-center justify-between">
-                  <p className="text-sm font-semibold text-gray-700 dark:text-gray-200">
+                  <p className="text-sm font-semibold text-gray-700 dark:text-gray-300">
                     {t.title}
                   </p>
-                  <p className="text-sm text-gray-500">{t.total}</p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">{t.total}</p>
                 </div>
 
                 <div className="mt-2 space-y-1">
                   {t.variants.map((v) => (
                     <div
                       key={`${t.title}-${v.name}`}
-                      className="flex items-center justify-between text-xs text-gray-600 dark:text-gray-300"
+                      className="flex items-center justify-between text-xs text-gray-600 dark:text-gray-400"
                     >
                       <span>{v.name}</span>
                       <span>{v.value}</span>
@@ -501,29 +504,29 @@ export default function Dapur() {
         </div>
 
         {/* Pengemasan */}
-        <div className="col-span-12 xl:col-span-4 bg-gray-50 dark:bg-gray-900 rounded-xl shadow-md border border-gray-200 dark:border-gray-800 overflow-hidden">
-          <div className="px-5 py-4 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between">
-            <h3 className="font-bold text-green-800 dark:text-white">
+        <div className="col-span-12 xl:col-span-4 bg-white dark:bg-[#1e293b] rounded-2xl shadow-sm border border-gray-200/60 dark:border-gray-700/60 overflow-hidden transition-colors duration-300">
+          <div className="px-5 py-4 border-b border-gray-200 dark:border-gray-700/60 flex items-center justify-between">
+            <h3 className="font-bold text-[#0d5c3b] dark:text-emerald-400">
               Pengemasan
             </h3>
 
             <div className="flex items-center gap-2">
               <button
                 onClick={() => setMenuType("sarapan")}
-                className={`text-xs px-3 py-1 rounded-lg ${
+                className={`text-xs px-3 py-1.5 rounded-lg font-medium transition-all duration-200 ${
                   menuType === "sarapan"
-                    ? "bg-green-800 text-white"
-                    : "border border-green-800 text-green-800 dark:text-green-400"
+                    ? "bg-[#0d5c3b] dark:bg-emerald-600 text-white shadow-sm shadow-[#0d5c3b]/20 dark:shadow-emerald-600/20"
+                    : "border border-[#0d5c3b] dark:border-emerald-500 text-[#0d5c3b] dark:text-emerald-400 hover:bg-[#0d5c3b]/5 dark:hover:bg-emerald-500/10"
                 }`}
               >
                 Sarapan
               </button>
               <button
                 onClick={() => setMenuType("siang")}
-                className={`text-xs px-3 py-1 rounded-lg ${
+                className={`text-xs px-3 py-1.5 rounded-lg font-medium transition-all duration-200 ${
                   menuType === "siang"
-                    ? "bg-green-800 text-white"
-                    : "border border-green-800 text-green-800 dark:text-green-400"
+                    ? "bg-[#0d5c3b] dark:bg-emerald-600 text-white shadow-sm shadow-[#0d5c3b]/20 dark:shadow-emerald-600/20"
+                    : "border border-[#0d5c3b] dark:border-emerald-500 text-[#0d5c3b] dark:text-emerald-400 hover:bg-[#0d5c3b]/5 dark:hover:bg-emerald-500/10"
                 }`}
               >
                 Makan Siang
@@ -531,7 +534,7 @@ export default function Dapur() {
 
               <button
                 type="button"
-                className="ml-1 w-9 h-9 rounded-lg bg-gray-800 dark:bg-gray-700 text-white flex items-center justify-center"
+                className="ml-1 w-9 h-9 rounded-lg bg-[#0d5c3b] dark:bg-emerald-600 text-white flex items-center justify-center hover:bg-[#09472e] dark:hover:bg-emerald-500 transition-colors shadow-sm shadow-[#0d5c3b]/20 dark:shadow-emerald-600/20"
                 title="Print"
                 onClick={() => alert("Simulasi print pengemasan")}
               >
@@ -541,17 +544,17 @@ export default function Dapur() {
           </div>
 
           <div className="p-5">
-            <div className="divide-y divide-gray-200 dark:divide-gray-700">
+            <div className="divide-y divide-gray-200 dark:divide-gray-700/60">
               {packingList.map((p) => (
-                <div key={p.name} className="py-3 flex items-center justify-between">
+                <div key={p.name} className="py-3 flex items-center justify-between hover:bg-gray-50/50 dark:hover:bg-gray-700/20 px-1 -mx-1 rounded-lg transition-colors">
                   <div className="pr-4">
-                    <p className="text-xs text-gray-700 dark:text-gray-200">
+                    <p className="text-xs text-gray-700 dark:text-gray-300">
                       {p.name}
                     </p>
                   </div>
 
                   <div className="flex items-center gap-4">
-                    <span className="text-xs text-gray-500 w-6 text-right">
+                    <span className="text-xs text-gray-500 dark:text-gray-400 w-6 text-right">
                       {p.qty}
                     </span>
 
@@ -563,10 +566,10 @@ export default function Dapur() {
                           )
                         )
                       }
-                      className={`cursor-pointer w-6 h-6 rounded-md border flex items-center justify-center transition ${
+                      className={`cursor-pointer w-6 h-6 rounded-md border flex items-center justify-center transition-all duration-200 ${
                         p.done
-                          ? "bg-green-800 border-green-800 text-white"
-                          : "border-green-800 text-green-800 dark:text-green-400"
+                          ? "bg-[#0d5c3b] dark:bg-emerald-600 border-[#0d5c3b] dark:border-emerald-600 text-white shadow-sm shadow-[#0d5c3b]/20 dark:shadow-emerald-600/20"
+                          : "border-[#0d5c3b] dark:border-emerald-500 text-[#0d5c3b] dark:text-emerald-400 hover:bg-[#0d5c3b]/5 dark:hover:bg-emerald-500/10"
                       }`}
                       title={p.done ? "Done" : "Not Done"}
                     >
@@ -582,9 +585,9 @@ export default function Dapur() {
               onClick={() =>
                 setPackingList((prev) => prev.map((x) => ({ ...x, done: true })))
               }
-              className="mt-4 w-full text-xs bg-green-800 text-white py-2 rounded-lg hover:bg-green-700"
+              className="mt-4 w-full text-xs bg-[#0d5c3b] dark:bg-emerald-600 text-white py-2.5 rounded-lg hover:bg-[#09472e] dark:hover:bg-emerald-500 shadow-sm shadow-[#0d5c3b]/20 dark:shadow-emerald-600/20 transition-all duration-200"
             >
-              Tandai Semua Selesai (Simulasi)
+              Tandai Semua Selesai
             </button>
           </div>
         </div>

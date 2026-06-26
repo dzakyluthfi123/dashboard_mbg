@@ -54,35 +54,36 @@ export default function Penerima() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 dark:bg-gray-950 p-4 md:p-6 space-y-6">
-      {/* HEADER */}
-      <div className="bg-gray-50 dark:bg-gray-900 px-6 py-4 rounded-xl shadow-md border border-gray-200 dark:border-gray-800 flex justify-between items-center">
-        <h1 className="text-lg font-bold text-green-800 dark:text-white">
+    <div className="min-h-screen bg-gray-50 dark:bg-[#0f172a] p-4 md:p-6 lg:p-8 space-y-6 transition-colors duration-300">
+      
+      {/* ========== HEADER ========== */}
+      <div className="bg-white dark:bg-[#1e293b] px-6 py-4 rounded-2xl shadow-sm border border-gray-200/60 dark:border-gray-700/60 flex justify-between items-center transition-colors duration-300">
+        <h1 className="text-xl md:text-2xl font-bold text-[#0d5c3b] dark:text-emerald-400">
           Penerima
         </h1>
 
-        <div className="text-sm text-gray-500 dark:text-gray-400 text-right capitalize">
-          <p>{hari}</p>
-          <p>{tanggalLengkap}</p>
+        <div className="text-right text-sm text-gray-500 dark:text-gray-400">
+          <p className="capitalize font-medium text-gray-700 dark:text-gray-300">{hari}</p>
+          <p className="text-xs">{tanggalLengkap}</p>
         </div>
       </div>
 
-      {/* TABLE */}
-      <div className="bg-gray-50 dark:bg-gray-900 rounded-xl shadow-md border border-gray-200 dark:border-gray-800 overflow-hidden">
-        <div className="px-5 py-4 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between">
+      {/* ========== TABLE ========== */}
+      <div className="bg-white dark:bg-[#1e293b] rounded-2xl shadow-sm border border-gray-200/60 dark:border-gray-700/60 overflow-hidden transition-colors duration-300">
+        
+        <div className="px-5 py-4 border-b border-gray-200 dark:border-gray-700/60 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
-            <h3 className="font-bold text-green-800 dark:text-white">
+            <h3 className="text-lg font-bold text-[#0d5c3b] dark:text-emerald-400">
               Daftar Penerima
             </h3>
-
-            <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+            <p className="text-sm text-gray-500 dark:text-gray-400 mt-0.5">
               Data penerima program Makanan Bergizi Gratis
             </p>
           </div>
 
           <button
             onClick={() => navigate("/penerima/tambah")}
-            className="text-xs px-4 py-2 rounded-lg bg-green-800 text-white hover:bg-green-700 transition"
+            className="text-xs px-4 py-2.5 rounded-lg bg-[#0d5c3b] dark:bg-emerald-600 text-white font-medium hover:bg-[#09472e] dark:hover:bg-emerald-500 transition-colors duration-200 shadow-sm shadow-[#0d5c3b]/20 dark:shadow-emerald-600/20"
           >
             Tambah Penerima
           </button>
@@ -90,49 +91,45 @@ export default function Penerima() {
 
         <div className="overflow-x-auto">
           <table className="min-w-full">
-            <thead className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+            <thead className="bg-white dark:bg-[#1e293b] border-b border-gray-200 dark:border-gray-700/60">
               <tr>
-                <th className="px-6 py-3 text-left text-sm font-semibold text-orange-500">
+                <th className="px-6 py-4 text-left text-sm font-semibold text-orange-500 dark:text-orange-400">
                   Penerima
                 </th>
-
-                <th className="px-6 py-3 text-left text-sm font-semibold text-orange-500">
+                <th className="px-6 py-4 text-left text-sm font-semibold text-orange-500 dark:text-orange-400">
                   Penanggung Jawab
                 </th>
-
-                <th className="px-6 py-3 text-left text-sm font-semibold text-orange-500">
+                <th className="px-6 py-4 text-left text-sm font-semibold text-orange-500 dark:text-orange-400">
                   Desa / Kabupaten
                 </th>
-
-                <th className="px-6 py-3 text-left text-sm font-semibold text-orange-500">
+                <th className="px-6 py-4 text-left text-sm font-semibold text-orange-500 dark:text-orange-400">
                   Nomor Telepon
                 </th>
-
-                <th className="px-6 py-3 text-left text-sm font-semibold text-orange-500">
+                <th className="px-6 py-4 text-left text-sm font-semibold text-orange-500 dark:text-orange-400">
                   Start Date
                 </th>
               </tr>
             </thead>
 
-            <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
+            <tbody className="divide-y divide-gray-200 dark:divide-gray-700/50">
               {dataPenerima.map((item) => (
                 <tr
                   key={item.id}
-                  className="hover:bg-gray-100 dark:hover:bg-gray-800 transition"
+                  className="hover:bg-[#0d5c3b]/5 dark:hover:bg-emerald-500/5 transition-colors duration-200"
                 >
-                  <td className="px-6 py-4 text-gray-700 dark:text-gray-200">
+                  <td className="px-6 py-4 text-gray-700 dark:text-gray-300 font-medium">
                     {item.penerima}
                   </td>
-                  <td className="px-6 py-4 text-gray-700 dark:text-gray-200">
+                  <td className="px-6 py-4 text-gray-700 dark:text-gray-300">
                     {item.penanggungJawab}
                   </td>
-                  <td className="px-6 py-4 text-gray-700 dark:text-gray-200">
+                  <td className="px-6 py-4 text-gray-700 dark:text-gray-300">
                     {item.desaKabupaten}
                   </td>
-                  <td className="px-6 py-4 text-gray-700 dark:text-gray-200">
+                  <td className="px-6 py-4 text-gray-600 dark:text-gray-400">
                     {item.nomorTelepon}
                   </td>
-                  <td className="px-6 py-4 text-gray-700 dark:text-gray-200">
+                  <td className="px-6 py-4 text-gray-700 dark:text-gray-300">
                     {formatTanggal(item.startDate)}
                   </td>
                 </tr>
